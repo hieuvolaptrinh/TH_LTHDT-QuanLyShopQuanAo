@@ -1,9 +1,11 @@
 import NHANVIEN.DanhSachNhanVien;
 import KHACHHANG.DanhSachKhachHang;
+import NHANVIEN.NhanVien;
 import QUANLY.QuanLy;
 import SANPHAM.DanhSachSanPham;
 import KHACHHANG.KhachHang;
 import DONHANG.DonHang;
+import SANPHAM.SanPham;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -148,8 +150,16 @@ public class Main {
         String maNV = sc.nextLine();
         System.out.print("Nhập họ tên: ");
         String hoTen = sc.nextLine();
+        // Xác thực nhân viên
+        NhanVien nhanVien = danhSachNhanVien.dangNhapNhanVien(maNV);
+        if (nhanVien != null) {
+            System.out.println("Đăng nhập thành công!");
+            System.out.println("Chào mừng " + nhanVien.getHoTen());
+            menuNhanVien(sc, danhSachSanPham, danhSachKhachHang); // Hiển thị menu cho nhân viên
+        } else {
+            System.out.println("Đăng nhập thất bại. Vui lòng kiểm tra lại mã nhân viên hoặc họ tên.");
+        }
         // Thêm logic xác thực nhân viên ở đây
-        menuNhanVien(sc, danhSachSanPham, danhSachKhachHang);
     }
 
     // Menu Nhân viên
@@ -212,7 +222,10 @@ public class Main {
 
                         KhachHang khachHang = danhSachKhachHang.dangNhapKhachHang(cccd);
                         if (khachHang != null) {
+                            // Nếu đăng nhập thành công, hiển thị menu
                             menuKhachHangDaDangNhap(sc, khachHang, danhSachSanPham);
+                        } else {
+                            System.out.println("Đăng nhập không thành công. Khách hàng không tồn tại.");
                         }
                         break;
                     case 3:
@@ -253,7 +266,8 @@ public class Main {
                         khachHang.hienThiLichSuMuaHang();
                         break;
                     case 3:
-                        DonHang donHang = new DonHang();
+                        KhachHang khachHang1 = new KhachHang();
+                        khachHang1.muaHang(danhSachSanPham);
                         // Thêm logic mua hàng ở đây
                         break;
                     case 4:

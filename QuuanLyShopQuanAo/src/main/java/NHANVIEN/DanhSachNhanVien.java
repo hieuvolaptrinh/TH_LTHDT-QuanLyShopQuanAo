@@ -156,7 +156,7 @@ public class DanhSachNhanVien {
         System.out.println("Tổng tiền trả cho tất cả nhân viên: " + tongTienTra);
     }
 //    đăng nhập nhân viên
-    NhanVien dangNhapNhanVien(String maNV) {
+    public NhanVien dangNhapNhanVien(String maNV) {
         if (danhSachNhanVien.containsKey(maNV)) {
             NhanVien nhanVien = danhSachNhanVien.get(maNV);
             return nhanVien;
