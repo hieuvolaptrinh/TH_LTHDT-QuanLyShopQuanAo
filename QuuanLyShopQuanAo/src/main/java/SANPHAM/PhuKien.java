@@ -1,15 +1,13 @@
 package SANPHAM;
 
+import java.util.Scanner;
+
 public class PhuKien extends SanPham{
     private String loaiPhuKien;
-    private String thuongHieu;
-    private String chatLieu;
 
-    public PhuKien(String maSanPham, String tenSanPham, double giaBan, int soLuong, String moTa, boolean trangThai, double giamGia, String loaiPhuKien, String thuongHieu, String chatLieu) {
-        super(maSanPham, tenSanPham, giaBan, soLuong, moTa, trangThai, giamGia);
+    public PhuKien(String maSanPham, String tenSanPham, double giaNhap, String ngaySanXuat, int soLuong, String chatLieu, String moTa, boolean trangThai, String mauSac, String loaiPhuKien) {
+        super(maSanPham, tenSanPham, giaNhap, ngaySanXuat, soLuong, chatLieu, moTa, trangThai, mauSac);
         this.loaiPhuKien = loaiPhuKien;
-        this.thuongHieu = thuongHieu;
-        this.chatLieu = chatLieu;
     }
 
     public String getLoaiPhuKien() {
@@ -20,19 +18,17 @@ public class PhuKien extends SanPham{
         this.loaiPhuKien = loaiPhuKien;
     }
 
-    public String getThuongHieu() {
-        return thuongHieu;
+    @Override
+    public void nhapTTSP() {
+        super.nhapTTSP();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Nhập loại phụ kiện: ");
+        this.loaiPhuKien = sc.nextLine();
     }
 
-    public void setThuongHieu(String thuongHieu) {
-        this.thuongHieu = thuongHieu;
-    }
-
-    public String getChatLieu() {
-        return chatLieu;
-    }
-
-    public void setChatLieu(String chatLieu) {
-        this.chatLieu = chatLieu;
+    @Override
+    public void xuatTTSP() {
+        super.xuatTTSP();
+        System.out.println("Loại phụ kiện: "+this.loaiPhuKien);
     }
 }
