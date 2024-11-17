@@ -62,17 +62,20 @@ public class KhachHang extends Nguoi {
 
 
     }
+
     // mua hàng
     public void muaHang(DanhSachSanPham dsSanPham) {
         DonHang donHang = new DonHang();
-        int luaChon=0;
-
+        int luaChon = 0;
+        dsSanPham.xuatDSSanPham();
+        if (dsSanPham.getDanhSachSanPham().isEmpty()) {
+            System.out.println("Hiện tại không có sản phẩm nào để mua.");
+            return;
+        }
         do {
-            dsSanPham.xuatDSSanPham();
             System.out.print("Nhập mã sản phẩm bạn muốn mua: ");
             String maSanPham = sc.nextLine();
 
-            // Tìm sản phẩm theo mã
             SanPham sanPham = null;
             for (SanPham sp : dsSanPham.getDanhSachSanPham().values()) {
                 if (sp.getMaSanPham().equals(maSanPham)) {
@@ -96,9 +99,10 @@ public class KhachHang extends Nguoi {
             if (soLuong > sanPham.getSoLuong()) {
                 System.out.println("Số lượng sản phẩm không đủ. Số lượng tồn kho: " + sanPham.getSoLuong());
                 continue; // Quay lại vòng lặp để nhập lại số lượng
-            }
-            else {
-                sanPham.capNhatSoLuong(sanPham.getSoLuong()-soLuong);
+            } else {
+                dsSanPham.getDanhSachSanPham().get(maSanPham).capNhatSoLuong(soLuong);
+                System.out.println("Đã thêm vào đơn hàng thành công!");
+
             }
             // Thêm sản phẩm vào đơn hàng
             donHang.themChiTietDonHang(sanPham, soLuong);
@@ -109,13 +113,10 @@ public class KhachHang extends Nguoi {
 
         } while (luaChon == 1);
 
-        // Lưu đơn hàng vào lịch sử mua hàng và cập nhật điểm tích lũy
         themLichSuMuaHang(donHang);
         tinhDiemTichLuy(donHang.thanhTien());
 
-        System.out.println("Đã thêm vào đơn hàng thành công!");
     }
-
 
 
     // Thêm mua hàng vào lịch sử

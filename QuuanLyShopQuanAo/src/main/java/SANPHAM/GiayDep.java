@@ -25,6 +25,7 @@ public class GiayDep extends SanPham {
         this.loaiGiayDep = sc.nextLine();
         System.out.print("Nhập size: ");
         this.sizeGD = sc.nextInt();
+        sc.nextLine();
     }
 
     @Override

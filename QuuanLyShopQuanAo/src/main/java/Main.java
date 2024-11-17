@@ -85,51 +85,50 @@ public class Main {
             System.out.println("9. Tìm kiếm thông tin nhân viên theo mã");
             System.out.println("10. Thống kê số lượng nhân viên trong cửa hàng");
             System.out.println("11. Xem danh sách khách hàng");
-            System.out.println("12. Đăng xuất");
+            System.out.println("12. Xem sản phẩm trong kho");
+            System.out.println("13. Đăng xuất");
             System.out.print("Chọn chức năng: ");
             try {
                 luaChon = sc.nextInt();
                 sc.nextLine();
                 switch (luaChon) {
                     case 1:
-                        danhSachNhanVien.hienThiThongTinNhanVien();
+                        quanLy.xemDanhSachNhanVien(danhSachNhanVien);
                         break;
                     case 2:
-                        System.out.print("Nhập mã nhân viên cần đuổi việc: ");
-                        String maNV = sc.nextLine();
-                        danhSachNhanVien.XoaNhanVien(maNV);
-
+                        quanLy.duoiViec(danhSachNhanVien);
                         break;
                     case 3:
-                        danhSachNhanVien.tongTienTraNhanVien();
+                        quanLy.tienTraLuongNhanVien(danhSachNhanVien);
                         break;
                     case 4:
-                        System.out.println("Tổng doanh thu: " + danhSachKhachHang.tongDoanhThu());
+                        quanLy.thongKeDoanhThu(danhSachKhachHang);
                         break;
                     case 5:
-                        danhSachKhachHang.lichSuMuaHang();
+                        quanLy.xemLichSuMuaHang(danhSachKhachHang);
                         break;
                     case 6:
-                        danhSachSanPham.nhapDSSanPham();
+                        quanLy.nhapSanPhamMoi(danhSachSanPham);
                         break;
                     case 7:
-                        danhSachNhanVien.ThemNhanVien();
+                        quanLy.themNhanVien(danhSachNhanVien);
                         break;
                     case 8:
-                        danhSachSanPham.tongTienNhapSanPham();
+                        quanLy.thongKeTienNhapHang(danhSachSanPham);
                         break;
                     case 9:
-                        System.out.print("Nhập mã nhân viên cần tìm: ");
-                        String maNhanVien = sc.nextLine();
-                        danhSachNhanVien.timNhanVien(maNhanVien);
+                        quanLy.timNhanVien(danhSachNhanVien);
                         break;
                     case 10:
-                        danhSachNhanVien.thongKeSoLuongNhanVien();
+                        quanLy.thongKeSoLuongNhanVien(danhSachNhanVien);
                         break;
                     case 11:
-                        danhSachKhachHang.xuatDanhSachKhachHang();
+                        quanLy.xuatDanhSachKhachHang(danhSachKhachHang);
                         break;
                     case 12:
+                        quanLy.xuatDanhSachSanPham(danhSachSanPham);
+                        break;
+                    case 13:
                         System.out.println("Đăng xuất thành công.");
                         return;
                     default:
@@ -148,8 +147,6 @@ public class Main {
                                          DanhSachSanPham danhSachSanPham, DanhSachKhachHang danhSachKhachHang) {
         System.out.print("Nhập mã nhân viên: ");
         String maNV = sc.nextLine();
-        System.out.print("Nhập họ tên: ");
-        String hoTen = sc.nextLine();
         // Xác thực nhân viên
         NhanVien nhanVien = danhSachNhanVien.dangNhapNhanVien(maNV);
         if (nhanVien != null) {
@@ -219,7 +216,6 @@ public class Main {
                     case 2:
                         System.out.print("Nhập CCCD: ");
                         String cccd = sc.nextLine();
-
                         KhachHang khachHang = danhSachKhachHang.dangNhapKhachHang(cccd);
                         if (khachHang != null) {
                             // Nếu đăng nhập thành công, hiển thị menu
@@ -266,9 +262,7 @@ public class Main {
                         khachHang.hienThiLichSuMuaHang();
                         break;
                     case 3:
-                        KhachHang khachHang1 = new KhachHang();
-                        khachHang1.muaHang(danhSachSanPham);
-                        // Thêm logic mua hàng ở đây
+                        khachHang.muaHang(danhSachSanPham);
                         break;
                     case 4:
                         System.out.println("Đăng xuất thành công.");

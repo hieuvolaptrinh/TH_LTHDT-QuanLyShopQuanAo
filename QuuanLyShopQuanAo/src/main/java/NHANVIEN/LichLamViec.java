@@ -39,14 +39,13 @@ public class LichLamViec {
     public void DangKiLichLamViec() {
         Scanner sc = new Scanner(System.in);
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        System.out.println("Nhập ngày làm việc : ");
+        System.out.println("Nhập ngày làm việc dd/MM/yyyy : ");
         String ngay = sc.nextLine();
         try {
             this.ngayLamViec = sdf.parse(ngay);
         } catch (ParseException e) {
             System.out.println("Ngày làm việc không hợp lệ.");
             e.printStackTrace();
-            return;
         }
         System.out.println("Nhập ca làm việc: ");
         int luaChon = 0;

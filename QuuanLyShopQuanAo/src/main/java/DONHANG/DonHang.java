@@ -9,25 +9,59 @@ import java.util.Date;
 import java.util.HashMap;
 
 public class DonHang {
-    private String maDonHang;
+//    private String maDonHang;
     private HashMap<String, ChiTietDonHang> dsChiTietDonHang;
     private ThongTinThanhToan thongTinThanhToan;
     private Date ngayMua;
     private double thanhTien;
 //    private NhanVien nhanVienDaban;
 
-    public DonHang( String maDonHang, Date ngayMua,  ThongTinThanhToan thongTinThanhToan) {
+    public DonHang( Date ngayMua,  ThongTinThanhToan thongTinThanhToan) {
         this.dsChiTietDonHang = new HashMap<>();
-        this.maDonHang = maDonHang;
+//        this.maDonHang = maDonHang;
         this.ngayMua = ngayMua;
 //        this.nhanVienDaban = nhanVienDaban;
         this.thongTinThanhToan = thongTinThanhToan;
     }
     public DonHang() {
         this.dsChiTietDonHang = new HashMap<>();
+       this.ngayMua = new Date();
 
     }
-//    thêm một chi tiết đơn hàng
+
+    public HashMap<String, ChiTietDonHang> getDsChiTietDonHang() {
+        return dsChiTietDonHang;
+    }
+
+    public void setDsChiTietDonHang(HashMap<String, ChiTietDonHang> dsChiTietDonHang) {
+        this.dsChiTietDonHang = dsChiTietDonHang;
+    }
+
+    public Date getNgayMua() {
+        return ngayMua;
+    }
+
+    public void setNgayMua(Date ngayMua) {
+        this.ngayMua = ngayMua;
+    }
+
+    public double getThanhTien() {
+        return thanhTien;
+    }
+
+    public void setThanhTien(double thanhTien) {
+        this.thanhTien = thanhTien;
+    }
+
+    public ThongTinThanhToan getThongTinThanhToan() {
+        return thongTinThanhToan;
+    }
+
+    public void setThongTinThanhToan(ThongTinThanhToan thongTinThanhToan) {
+        this.thongTinThanhToan = thongTinThanhToan;
+    }
+
+    //    thêm một chi tiết đơn hàng
     public void themChiTietDonHang(SanPham sanPham, int soLuong){
         System.out.println("----------------------Nhập thông tin đơn hàng:----------------------------");
         System.out.println("nhập thông tin thanh toán ");
@@ -43,7 +77,7 @@ public class DonHang {
     public void inDonHang(){
         System.out.println("--------------------------------------------------");
         System.out.println("Thông tin đơn hàng: ");
-        System.out.println("Mã đơn hàng: " + maDonHang);
+//        System.out.println("Mã đơn hàng: " + maDonHang);
 
         // Định dạng ngày giờ
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");

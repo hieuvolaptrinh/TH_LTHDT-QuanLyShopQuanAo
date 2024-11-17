@@ -130,8 +130,10 @@ public class SanPham {
         this.tenSanPham = sc.nextLine();
         System.out.print("Nhập giá nhập: ");
         this.giaNhap = sc.nextDouble();
+        sc.nextLine();
         System.out.println("Nhập giá bán: ");
         this.giaBan = sc.nextDouble();
+        sc.nextLine();
         System.out.println("Nhập ngày sản xuất (dd/mm/yyyy): ");
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         try {
@@ -142,6 +144,7 @@ public class SanPham {
         }
         System.out.print("Nhập số lượng: ");
         this.soLuong = sc.nextInt();
+        sc.nextLine();
         if (this.soLuong < 0) {
             System.out.println("Số lượng không thể là giá trị âm. Đặt lại số lượng là 0.");
             this.soLuong = 0;
@@ -184,7 +187,7 @@ public class SanPham {
         }
     }
     public double capNhatSoLuong(int soLuongCapNhat){
-        this.soLuong = soLuongCapNhat + soLuong;
+        this.soLuong =  soLuong-soLuongCapNhat ;
         System.out.println("Số lượng sau khi cập nhật là: "+this.soLuong);
         capNhatTrangThai();
         return soLuong;

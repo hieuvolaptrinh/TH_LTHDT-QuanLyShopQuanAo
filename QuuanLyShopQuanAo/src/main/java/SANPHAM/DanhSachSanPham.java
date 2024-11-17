@@ -54,22 +54,7 @@ public class DanhSachSanPham {
             }
         } while (luaChon != 4);
     }
-//    xuất danh sách sản phẩm
-    public void xuatDSSanPham(){
-        System.out.println("Danh sách tất cả sản phẩm");
-        for (SanPham sanPham : danhSachSanPham.values()) {
-            if (sanPham instanceof QuanAo) {
-                QuanAo quanAo = (QuanAo) sanPham;
-                quanAo.xuatTTSP();
-            } else if (sanPham instanceof GiayDep) {
-                GiayDep giayDep = (GiayDep) sanPham;
-                giayDep.xuatTTSP();
-            } else if (sanPham instanceof PhuKien) {
-                PhuKien phuKien = (PhuKien) sanPham;
-                phuKien.xuatTTSP();
-            }
-        }
-    }
+
 //    xuất quần áo
     public void xuatQuanAo(){
         System.out.println("Danh sách quần áo");
@@ -93,12 +78,25 @@ public class DanhSachSanPham {
 //    xuất phụ kiện
     public void xuatPhuKien(){
         System.out.println("Danh sách phụ kiện");
+
         for (SanPham sanPham : danhSachSanPham.values()) {
             if (sanPham instanceof PhuKien) {
                 PhuKien phuKien = (PhuKien) sanPham;
                 phuKien.xuatTTSP();
             }
         }
+    }
+    //    xuất danh sách sản phẩm
+    public void xuatDSSanPham(){
+        System.out.println("Danh sách tất cả sản phẩm");
+        if (danhSachSanPham.isEmpty()) {
+            System.out.println(" --------Không có sản phẩm nào--------");
+            return;
+        }
+        this.xuatGiayDep();
+        this.xuatQuanAo();
+        this.xuatPhuKien();
+
     }
     //tổng tiền nhập sản phẩm mới
     public void tongTienNhapSanPham(){

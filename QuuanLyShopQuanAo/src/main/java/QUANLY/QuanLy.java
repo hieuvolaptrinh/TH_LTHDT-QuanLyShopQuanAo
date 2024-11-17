@@ -113,4 +113,8 @@ public class QuanLy {
     public void xuatDanhSachKhachHang(DanhSachKhachHang danhSachKhachHang) {
         danhSachKhachHang.xuatDanhSachKhachHang();
     }
+//    xuất danh sách sản phẩm trong kho
+    public void xuatDanhSachSanPham(DanhSachSanPham dsSanPham) {
+        dsSanPham.xuatDSSanPham();
+    }
 }
