@@ -35,12 +35,39 @@ public class QuanLy {
 
     //    xem danh sách nhân viên
     public void xemDanhSachNhanVien(DanhSachNhanVien danhSachNhanVien) {
-        danhSachNhanVien.hienThiThongTinNhanVien();
+        int chon=0;
+        do {
+            System.out.println("1. Thống kê  nhân viên bán thời gian");
+            System.out.println("2. Thống kê  nhân viên toàn thời gian");
+            System.out.println("3. Thống kê  nhân viên");
+            System.out.println("4. Thoát");
+            System.out.println("Chọn: ");
+            chon = sc.nextInt();
+            sc.nextLine();
+            switch (chon) {
+                case 1:
+                    danhSachNhanVien.hienThiThongTinNhanVienBanThoiGian();
+                    break;
+                case 2:
+                    danhSachNhanVien.hienThiThongTinNhanVienToanThoiGian();
+                    break;
+                case 3:
+                    danhSachNhanVien.hienThiThongTinNhanVien();
+                    break;
+                case 4:
+                    break;
+                default:
+                    System.out.println("Nhập sai, vui lòng nhập lại");
+                    break;
+            }
+
+        }while (chon!=4);
     }
 
     //    thống kê số lượng nhân viên trong cửa hàng
     public void thongKeSoLuongNhanVien(DanhSachNhanVien danhSachNhanVien) {
-        danhSachNhanVien.thongKeSoLuongNhanVien();
+       danhSachNhanVien.thongKeSoLuongNhanVien();
+
     }
 
     //tìm nhân viên them mã
@@ -81,5 +108,9 @@ public class QuanLy {
 //    xem lịch sử mua hàng
     public void xemLichSuMuaHang(DanhSachKhachHang danhSachKhachHang) {
         danhSachKhachHang.lichSuMuaHang();
+    }
+//    xuất danh sách khách hàng
+    public void xuatDanhSachKhachHang(DanhSachKhachHang danhSachKhachHang) {
+        danhSachKhachHang.xuatDanhSachKhachHang();
     }
 }

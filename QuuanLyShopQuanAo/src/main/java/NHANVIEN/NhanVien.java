@@ -32,8 +32,8 @@ public abstract class NhanVien extends Nguoi {
 
     //Các phương thức
     @Override
-    public void NhapThongTin() {
-        super.NhapThongTin();
+    public void nhapThongTin() {
+        super.nhapThongTin();
         System.out.println("Nhập mã nhân viên : ");
         this.maNhanVien = sc.nextLine();
 

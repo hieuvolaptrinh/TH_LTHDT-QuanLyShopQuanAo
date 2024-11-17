@@ -64,8 +64,8 @@ public class NhanVienBanThoigian extends NhanVien {
 
     //Các phương thức
     @Override
-    public void NhapThongTin() {
-        super.NhapThongTin();
+    public void nhapThongTin() {
+        super.nhapThongTin();
         System.out.println("");
         System.out.println("Bạn có muốn đăng kí lịch làm việc không? (Có/Không)");
         int luaChon = 0;

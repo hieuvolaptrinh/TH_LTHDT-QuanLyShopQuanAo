@@ -11,7 +11,7 @@ public class DanhSachNhanVien {
         this.danhSachNhanVien = new HashMap<>();
     }
 
-    //    thêm nhân viên
+    // thêm nhân viên
     public void ThemNhanVien() {
         int luaChon;
         do {
@@ -25,12 +25,12 @@ public class DanhSachNhanVien {
             switch (luaChon) {
                 case 1:
                     NhanVienBanThoigian nhanVienBanThoiGian = new NhanVienBanThoigian();
-                    nhanVienBanThoiGian.NhapThongTin();
+                    nhanVienBanThoiGian.nhapThongTin();
                     danhSachNhanVien.put(nhanVienBanThoiGian.getMaNhanVien(), nhanVienBanThoiGian);
                     break;
                 case 2:
                     NhanVienToanThoiGian nhanVienChinhThuc = new NhanVienToanThoiGian();
-                    nhanVienChinhThuc.NhapThongTin();
+                    nhanVienChinhThuc.nhapThongTin();
                     danhSachNhanVien.put(nhanVienChinhThuc.getMaNhanVien(), nhanVienChinhThuc);
                     break;
                 case 3:
@@ -43,12 +43,16 @@ public class DanhSachNhanVien {
         } while (luaChon != 3);
     }
 
-    //    xóa nhân viên
+    // xóa nhân viên
     public void XoaNhanVien(String maNhanVien) {
+        if (!danhSachNhanVien.containsKey(maNhanVien)) {
+            System.out.println("Không tìm thấy nhân viên có mã " + maNhanVien);
+            return;
+        }
         this.danhSachNhanVien.remove(maNhanVien);
     }
 
-    //    thống kê số lượng nhân viên mỗi loại
+    // thống kê số lượng nhân viên mỗi loại
     public void thongKeSoLuongNhanVien() {
         int soLuongNhanVienBanThoiGian = 0;
         int soLuongNhanVienChinhThuc = 0;
@@ -63,7 +67,7 @@ public class DanhSachNhanVien {
         System.out.println("Số lượng nhân viên chính thức: " + soLuongNhanVienChinhThuc);
     }
 
-    //    hiển thị thông tin nhân viên theo loại
+    // hiển thị thông tin nhân viên theo loại
     public void hienThiThongTinNhanVienBanThoiGian() {
 
         for (NhanVien nhanVien : danhSachNhanVien.values()) {
@@ -75,7 +79,7 @@ public class DanhSachNhanVien {
         }
     }
 
-    //    hiển thị thông tin nhân viên theo loại toàn thời gian
+    // hiển thị thông tin nhân viên theo loại toàn thời gian
     public void hienThiThongTinNhanVienToanThoiGian() {
         for (NhanVien nhanVien : danhSachNhanVien.values()) {
             if (nhanVien instanceof NhanVienToanThoiGian) {
@@ -86,7 +90,7 @@ public class DanhSachNhanVien {
 
     }
 
-    //    hiển thị thông tin nhân viên
+    // hiển thị thông tin nhân viên
     public void hienThiThongTinNhanVien() {
         System.out.println("-------------------------------------------------");
         hienThiThongTinNhanVienBanThoiGian();
@@ -95,7 +99,7 @@ public class DanhSachNhanVien {
         System.out.println("-------------------------------------------------");
     }
 
-    //    tìm nhân viên theo mã nhân viên
+    // tìm nhân viên theo mã nhân viên
     public void timNhanVien(String maNV) {
         if (danhSachNhanVien.containsKey(maNV)) {
             NhanVien nhanVien = danhSachNhanVien.get(maNV);
@@ -112,7 +116,7 @@ public class DanhSachNhanVien {
         }
     }
 
-    //    tổng tiền trả có nhân viên bán thời gian
+    // tổng tiền trả có nhân viên bán thời gian
     public void tongTienTraNhanVienBanThoiGian() {
         double tongTienTra = 0;
         for (NhanVien nhanVien : danhSachNhanVien.values()) {
@@ -124,7 +128,7 @@ public class DanhSachNhanVien {
         System.out.println("Tổng tiền trả cho nhân viên bán thời gian: " + tongTienTra);
     }
 
-    //    tổng tiền trả có nhân viên chính thức
+    // tổng tiền trả có nhân viên chính thức
     public void tongTienTraNhanVienChinhThuc() {
         double tongTienTra = 0;
         for (NhanVien nhanVien : danhSachNhanVien.values()) {
@@ -135,7 +139,8 @@ public class DanhSachNhanVien {
         }
         System.out.println("Tổng tiền trả cho nhân viên chính thức: " + tongTienTra);
     }
-//    tổng tiền trả cho tất cả nhân viên
+
+    // tổng tiền trả cho tất cả nhân viên
     public void tongTienTraNhanVien() {
         double tongTienTra = 0;
         for (NhanVien nhanVien : danhSachNhanVien.values()) {
@@ -149,5 +154,13 @@ public class DanhSachNhanVien {
             }
         }
         System.out.println("Tổng tiền trả cho tất cả nhân viên: " + tongTienTra);
+    }
+//    đăng nhập nhân viên
+    NhanVien dangNhapNhanVien(String maNV) {
+        if (danhSachNhanVien.containsKey(maNV)) {
+            NhanVien nhanVien = danhSachNhanVien.get(maNV);
+            return nhanVien;
+        }
+        return null;
     }
 }

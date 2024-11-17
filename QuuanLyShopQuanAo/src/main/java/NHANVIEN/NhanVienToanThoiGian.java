@@ -9,13 +9,14 @@ public class NhanVienToanThoiGian extends NhanVien {
     private final static double luongCoBan = 1500000;
     private final static double phuCap = 200000;
     private double heSoLuong;
-    private final   static double baoHiem=250000;
+    private final static double baoHiem = 250000;
     private int soCaTangCa;
     private int soNgayNghi;
     private Date ngayVaoLamViec;
 
-    //Constructor
-    public NhanVienToanThoiGian(String CCCD, String hoTen, String soDienThoai, String gioiTinh, String email, String diaChi, String maNhanVien, Date ngayVaoLamViec, double heSoLuong,  int soCaTangCa, int soNgayNghi) {
+    // Constructor
+    public NhanVienToanThoiGian(String CCCD, String hoTen, String soDienThoai, String gioiTinh, String email,
+            String diaChi, String maNhanVien, Date ngayVaoLamViec, double heSoLuong, int soCaTangCa, int soNgayNghi) {
         super(CCCD, hoTen, soDienThoai, gioiTinh, email, diaChi, maNhanVien);
         this.heSoLuong = heSoLuong;
 
@@ -29,8 +30,7 @@ public class NhanVienToanThoiGian extends NhanVien {
         this.soNgayNghi = 0;
     }
 
-//Getter and Setter
-
+    // Getter and Setter
 
     public double getHeSoLuong() {
         return heSoLuong;
@@ -43,7 +43,6 @@ public class NhanVienToanThoiGian extends NhanVien {
     public double getBaoHiem() {
         return baoHiem;
     }
-
 
     public int getSoCaTangCa() {
         return soCaTangCa;
@@ -69,10 +68,10 @@ public class NhanVienToanThoiGian extends NhanVien {
         this.ngayVaoLamViec = ngayVaoLamViec;
     }
 
-    //Các phương thức
+    // Các phương thức
     @Override
-    public void NhapThongTin() {
-        super.NhapThongTin();
+    public void nhapThongTin() {
+        super.nhapThongTin();
         // Nhập ngày vào làm việc
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         dateFormat.setLenient(false); // Kiểm tra chặt chẽ định dạng ngày
@@ -88,7 +87,6 @@ public class NhanVienToanThoiGian extends NhanVien {
         }
         System.out.println("Nhập hệ số lương :");
         this.heSoLuong = sc.nextDouble();
-
 
     }
 
@@ -121,7 +119,7 @@ public class NhanVienToanThoiGian extends NhanVien {
         return this.heSoLuong * luongCoBan + TinhPhuCap() + LuongTangCa() - this.baoHiem - TienPhat();
     }
 
-    //    đăng kí tăng ca
+    // đăng kí tăng ca
     public void DangKiTangCa() {
         System.out.println("bạn có muốn đăng kí tăng ca không? (Có/Không)");
         int luaChon = 0;

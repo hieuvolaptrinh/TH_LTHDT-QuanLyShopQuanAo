@@ -17,7 +17,7 @@ public class DanhSachKhachHang {
         khachHang.nhapThongTin();
     }
 //    đăng nhập khách hàng
-    KhachHang dangNhapKhachHang(String CCCD, String hoTen) {
+    public KhachHang dangNhapKhachHang(String CCCD) {
         if(!danhSachKhachHang.containsKey(CCCD)) {
             System.out.println("Không tìm thấy khách hàng");
             return null;
@@ -44,6 +44,12 @@ public class DanhSachKhachHang {
     public void lichSuMuaHang() {
         for (KhachHang khachHang : danhSachKhachHang.values()) {
             khachHang.hienThiLichSuMuaHang();
+        }
+    }
+//    xuat danh sach khach hang
+    public void xuatDanhSachKhachHang() {
+        for (KhachHang khachHang : danhSachKhachHang.values()) {
+            khachHang.inThongTin();
         }
     }
 }
