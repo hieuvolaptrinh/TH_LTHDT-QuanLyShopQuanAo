@@ -6,9 +6,11 @@ import java.util.Scanner;
 public class PhuKien extends SanPham{
     private String loaiPhuKien;
 
-    public PhuKien(String maSanPham, String tenSanPham, double giaNhap, Date ngaySanXuat, int soLuong, String chatLieu, String moTa, boolean trangThai, String mauSac, String loaiPhuKien) {
-        super(maSanPham, tenSanPham, giaNhap, ngaySanXuat, soLuong, chatLieu, moTa, trangThai, mauSac);
+    public PhuKien(String maSanPham, String tenSanPham, double giaNhap,double giaBan, Date ngaySanXuat, int soLuong, String chatLieu, String moTa, boolean trangThai, String mauSac, String loaiPhuKien) {
+        super(maSanPham, tenSanPham, giaNhap,giaBan, ngaySanXuat, soLuong, chatLieu, moTa, trangThai, mauSac);
         this.loaiPhuKien = loaiPhuKien;
+    }
+    public PhuKien( ) {
     }
 
     public String getLoaiPhuKien() {

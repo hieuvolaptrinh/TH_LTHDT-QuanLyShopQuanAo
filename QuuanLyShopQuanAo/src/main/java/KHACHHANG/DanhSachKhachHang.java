@@ -1,0 +1,49 @@
+package KHACHHANG;
+
+import DONHANG.DonHang;
+
+import java.util.HashMap;
+
+public class DanhSachKhachHang {
+    private HashMap<String, KhachHang> danhSachKhachHang;
+
+    public DanhSachKhachHang() {
+        this.danhSachKhachHang = new HashMap<>();
+    }
+
+    //    thêm khách hàng
+    public void dangKiKhachHang() {
+        KhachHang khachHang = new KhachHang();
+        khachHang.nhapThongTin();
+    }
+//    đăng nhập khách hàng
+    KhachHang dangNhapKhachHang(String CCCD, String hoTen) {
+        if(!danhSachKhachHang.containsKey(CCCD)) {
+            System.out.println("Không tìm thấy khách hàng");
+            return null;
+        }
+        return danhSachKhachHang.get(CCCD);
+    }
+//    xem thông tin khách hàng
+    public void xemThongTinKhachHang() {
+        for (KhachHang khachHang : danhSachKhachHang.values()) {
+            khachHang.inThongTin();
+        }
+    }
+//    tính doanh thu
+    public double tongDoanhThu() {
+        double doanhThu = 0;
+        for (KhachHang khachHang : danhSachKhachHang.values()) {
+            for (DonHang donHang: khachHang.getLichSuMuaHang()) {
+                doanhThu += donHang.thanhTien();
+            }
+        }
+        return doanhThu;
+    }
+//    lịch sử bản hàng
+    public void lichSuMuaHang() {
+        for (KhachHang khachHang : danhSachKhachHang.values()) {
+            khachHang.hienThiLichSuMuaHang();
+        }
+    }
+}

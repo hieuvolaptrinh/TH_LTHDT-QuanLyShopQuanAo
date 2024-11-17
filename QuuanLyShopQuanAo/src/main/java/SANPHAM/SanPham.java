@@ -8,7 +8,7 @@ public class SanPham {
 
     protected String maSanPham;
     protected String tenSanPham;
-    protected double giaNhap;
+    protected double giaNhap,giaBan;
     protected Date ngaySanXuat;
     protected int soLuong;
     protected String chatLieu;
@@ -18,16 +18,20 @@ public class SanPham {
     protected String mauSac;
     protected static final double giamGia = 0;
 
-    public SanPham(String maSanPham, String tenSanPham, double giaNhap, Date ngaySanXuat, int soLuong, String chatLieu, String moTa, boolean trangThai, String mauSac) {
+    public SanPham(String maSanPham, String tenSanPham, double giaNhap,double giaBan, Date ngaySanXuat, int soLuong, String chatLieu, String moTa, boolean trangThai, String mauSac) {
         this.maSanPham = maSanPham;
         this.tenSanPham = tenSanPham;
         this.giaNhap = giaNhap;
+        this.giaBan = giaBan;
         this.ngaySanXuat = ngaySanXuat;
         this.soLuong = soLuong;
         this.chatLieu = chatLieu;
         this.moTa = moTa;
         this.trangThai = trangThai;
         this.mauSac = mauSac;
+    }
+
+    public SanPham() {
     }
 
     public String getMaSanPham() {
@@ -110,14 +114,24 @@ public class SanPham {
         this.mauSac = mauSac;
     }
 
+    public double getGiaBan() {
+        return giaBan;
+    }
+
+    public void setGiaBan(double giaBan) {
+        this.giaBan = giaBan;
+    }
+
     public void nhapTTSP(){
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhập mã sản phẩm: ");
         this.maSanPham = sc.nextLine();
         System.out.print("Nhập tên sản phẩm: ");
         this.tenSanPham = sc.nextLine();
-        System.out.print("Nhập giá tiền: ");
+        System.out.print("Nhập giá nhập: ");
         this.giaNhap = sc.nextDouble();
+        System.out.println("Nhập giá bán: ");
+        this.giaBan = sc.nextDouble();
         System.out.println("Nhập ngày sản xuất (dd/mm/yyyy): ");
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         try {
@@ -147,11 +161,13 @@ public class SanPham {
         String diaChi = sc.nextLine();
 
         this.nhaCungCap = new NhaCungCap(quocGia, tenCongTy, diaChi);
+
     }
     public void xuatTTSP(){
         System.out.println("Mã sản phẩm là: "+this.maSanPham);
         System.out.println("Tên sản phẩm là: "+this.tenSanPham);
-        System.out.println("Giá bán cua sản phẩm là: "+this.giaNhap);
+        System.out.println("Giá nhập cua sản phẩm là: "+String.format("%.2f", this.getGiaNhap()));
+        System.out.println("Giá bán cua sản phẩm là: "+String.format("%.2f", this.getGiaBan()));
         System.out.println("Ngày sản xuất: "+this.ngaySanXuat);
         System.out.println("Số luọng: "+this.soLuong);
         System.out.println("Chất liệu: "+this.chatLieu);
@@ -176,6 +192,10 @@ public class SanPham {
     public void capNhatTrangThai(){
         this.trangThai = soLuong > 0;
         System.out.println("Trạng thái sau khi cập nhật số lượng: "+(this.trangThai ? "Còn hàng" : "Hết hàng"));
+    }
+//    tính tiền nhập sản phẩm
+    public double tinhTienNhapSanPham(){
+        return this.giaNhap * this.soLuong;
     }
 
 }

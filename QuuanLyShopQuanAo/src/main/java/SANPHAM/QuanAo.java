@@ -8,11 +8,13 @@ public class QuanAo extends SanPham {
     private String gioiTinh;
     private String kieuDang;
 
-    public QuanAo(String maSanPham, String tenSanPham, double giaNhap, Date ngaySanXuat, int soLuong, String chatLieu, String moTa, boolean trangThai, String mauSac, String sizeQA, String gioiTinh, String kieuDang) {
-        super(maSanPham, tenSanPham, giaNhap, ngaySanXuat, soLuong, chatLieu, moTa, trangThai, mauSac);
+    public QuanAo(String maSanPham, String tenSanPham, double giaNhap,double giaBan, Date ngaySanXuat, int soLuong, String chatLieu, String moTa, boolean trangThai, String mauSac, String sizeQA, String gioiTinh, String kieuDang) {
+        super(maSanPham, tenSanPham, giaNhap,giaBan, ngaySanXuat, soLuong, chatLieu, moTa, trangThai, mauSac);
         this.sizeQA = sizeQA;
         this.gioiTinh = gioiTinh;
         this.kieuDang = kieuDang;
+    }
+    public QuanAo(){
     }
 
     public String getSizeQA() {

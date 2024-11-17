@@ -8,12 +8,14 @@ public class GiayDep extends SanPham {
     private String loaiGiayDep;
     private int sizeGD;
 
-    public GiayDep(String maSanPham, String tenSanPham, double giaNhap, Date ngaySanXuat, int soLuong, String chatLieu, String moTa, boolean trangThai, String mauSac, String loaiGiayDep, int sizeGD) {
-        super(maSanPham, tenSanPham, giaNhap, ngaySanXuat, soLuong, chatLieu, moTa, trangThai, mauSac);
+    public GiayDep(String maSanPham, String tenSanPham, double giaNhap,double giaBan, Date ngaySanXuat, int soLuong, String chatLieu, String moTa, boolean trangThai, String mauSac, String loaiGiayDep, int sizeGD) {
+        super(maSanPham, tenSanPham, giaNhap,giaBan, ngaySanXuat, soLuong, chatLieu, moTa, trangThai, mauSac);
         this.loaiGiayDep = loaiGiayDep;
         this.sizeGD = sizeGD;
     }
+    public GiayDep() {
 
+    }
 
     @Override
     public void nhapTTSP() {
