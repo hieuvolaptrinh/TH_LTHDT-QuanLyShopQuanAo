@@ -139,7 +139,15 @@ public class DanhSachNhanVien {
         }
         System.out.println("Tổng tiền trả cho nhân viên chính thức: " + tongTienTra);
     }
-
+//in lịch làm việc của nhân viên bán thời gian
+    public void inLichLamViecNhanVienBanThoiGian() {
+        for (NhanVien nhanVien : danhSachNhanVien.values()) {
+            if (nhanVien instanceof NhanVienBanThoigian) {
+                NhanVienBanThoigian nhanVienBanThoigian = (NhanVienBanThoigian) nhanVien;
+                nhanVienBanThoigian.inLichLamViec();
+            }
+        }
+    }
     // tổng tiền trả cho tất cả nhân viên
     public void tongTienTraNhanVien() {
         double tongTienTra = 0;

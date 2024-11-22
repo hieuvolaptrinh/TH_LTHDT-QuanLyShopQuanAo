@@ -1,6 +1,8 @@
 import NHANVIEN.DanhSachNhanVien;
 import KHACHHANG.DanhSachKhachHang;
 import NHANVIEN.NhanVien;
+import NHANVIEN.NhanVienBanThoigian;
+import NHANVIEN.NhanVienToanThoiGian;
 import QUANLY.QuanLy;
 import SANPHAM.DanhSachSanPham;
 import KHACHHANG.KhachHang;
@@ -152,7 +154,16 @@ public class Main {
         if (nhanVien != null) {
             System.out.println("Đăng nhập thành công!");
             System.out.println("Chào mừng " + nhanVien.getHoTen());
-            menuNhanVien(sc, danhSachSanPham, danhSachKhachHang); // Hiển thị menu cho nhân viên
+            if (nhanVien instanceof NhanVienBanThoigian) {
+                NhanVienBanThoigian nhanVienBanThoigian = (NhanVienBanThoigian) nhanVien;
+                menuNhanVienBanThoiGian(sc, danhSachSanPham, danhSachKhachHang, danhSachNhanVien, nhanVienBanThoigian); // Hiển thị menu cho nhân viên
+
+            }
+            if (nhanVien instanceof NhanVienToanThoiGian) {
+                NhanVienToanThoiGian nhanVienToanThoiGian = (NhanVienToanThoiGian) nhanVien;
+                menuNhanVienToanThoiGian(sc, danhSachSanPham, danhSachKhachHang, danhSachNhanVien, nhanVienToanThoiGian); // Hiển thị menu cho nhân viên
+
+            }
         } else {
             System.out.println("Đăng nhập thất bại. Vui lòng kiểm tra lại mã nhân viên hoặc họ tên.");
         }
@@ -160,14 +171,52 @@ public class Main {
     }
 
     // Menu Nhân viên
-    private static void menuNhanVien(Scanner sc, DanhSachSanPham danhSachSanPham, DanhSachKhachHang danhSachKhachHang) {
+    private static void menuNhanVienToanThoiGian(Scanner sc, DanhSachSanPham danhSachSanPham, DanhSachKhachHang danhSachKhachHang, DanhSachNhanVien danhSachNhanVien, NhanVienToanThoiGian nhanVienToanThoiGian) {
         int luaChon;
         do {
             System.out.println("***** MENU NHÂN VIÊN *****");
             System.out.println("1. Xem danh sách sản phẩm");
             System.out.println("2. Xem danh sách khách hàng");
-            System.out.println("3. Tạo đơn hàng mới");
-            System.out.println("4. Đăng xuất");
+//            System.out.println("3. Tạo đơn hàng mới");
+            System.out.println("0. Đăng xuất");
+            System.out.print("Chọn chức năng: ");
+            try {
+                luaChon = sc.nextInt();
+                sc.nextLine();
+                switch (luaChon) {
+                    case 1:
+                        danhSachSanPham.xuatDSSanPham();
+                        break;
+                    case 2:
+                        danhSachKhachHang.xuatDanhSachKhachHang();
+                        break;
+//                    case 3:
+//
+//                        break;
+                    case 0:
+                        System.out.println("Đăng xuất thành công.");
+                        return;
+                    default:
+                        System.out.println("Chức năng không hợp lệ.");
+                        break;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Lỗi: Vui lòng nhập số.");
+                sc.nextLine();
+            }
+        } while (true);
+    }
+
+    private static void menuNhanVienBanThoiGian(Scanner sc, DanhSachSanPham danhSachSanPham, DanhSachKhachHang danhSachKhachHang, DanhSachNhanVien danhSachNhanVien, NhanVienBanThoigian nhanVienBanThoigian) {
+        int luaChon;
+        do {
+            System.out.println("***** MENU NHÂN VIÊN *****");
+            System.out.println("1. Xem danh sách sản phẩm");
+            System.out.println("2. Xem danh sách khách hàng");
+            System.out.println("3. Đăng ki lich lam viec");
+            System.out.println("4. Xem lịch làm việc");
+            System.out.println("5. Phoo tô lịch làm viêc ( ghi ra file)");
+            System.out.println("0. Đăng xuất");
             System.out.print("Chọn chức năng: ");
             try {
                 luaChon = sc.nextInt();
@@ -180,9 +229,14 @@ public class Main {
                         danhSachKhachHang.xuatDanhSachKhachHang();
                         break;
                     case 3:
-                        // Thêm logic tạo đơn hàng mới
+                        nhanVienBanThoigian.DangKiLichLamViec();
                         break;
                     case 4:
+                        nhanVienBanThoigian.inLichLamViec();
+                        break;
+                    case 5:
+                        nhanVienBanThoigian.xuatFileLichLamViec();
+                    case 0:
                         System.out.println("Đăng xuất thành công.");
                         return;
                     default:
@@ -277,4 +331,5 @@ public class Main {
             }
         } while (true);
     }
+
 }

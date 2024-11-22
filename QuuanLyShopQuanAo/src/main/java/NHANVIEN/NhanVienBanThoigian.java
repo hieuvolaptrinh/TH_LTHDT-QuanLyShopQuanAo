@@ -1,6 +1,12 @@
 package NHANVIEN;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class NhanVienBanThoigian extends NhanVien {
     private final static double luongTheoGio = 25000;
@@ -67,7 +73,7 @@ public class NhanVienBanThoigian extends NhanVien {
     public void nhapThongTin() {
         super.nhapThongTin();
         System.out.println("");
-        System.out.println("Bạn có muốn đăng kí lịch làm việc không? (Có/Không)");
+        System.out.println("Bạn có muốn đăng kí lịch làm việc cho nhân viên  không? (Có/Không)");
         int luaChon = 0;
         do {
             System.out.println("1. Có");
@@ -87,26 +93,12 @@ public class NhanVienBanThoigian extends NhanVien {
                     break;
             }
         } while (luaChon < 1 || luaChon > 2);
-
-        double gioLam = 0, gioLamTangCa = 0, gioNghi = 0;
-        for (LichLamViec lichLamViec : lichLamViecs) {
-            if (lichLamViec.getCaLamViec().equals("Sáng")) {
-                gioLam += 4;
-            } else if (lichLamViec.getCaLamViec().equals("Chiều")) {
-                gioLam += 4;
-            } else {
-                gioLamTangCa += 4;
-            }
-        }
-        this.soGioLam = gioLam;
-        this.soGioLamTangCa = gioLamTangCa;
-        this.soGioNghi = gioNghi;
     }
 
     @Override
     public void inThongTin() {
         super.inThongTin();
-        System.out.println("Lịch làm việc : ");
+        System.out.println("-------------------Lịch làm việc của nhân viên  " + this.getHoTen() + "-------------------");
         for (LichLamViec lichLamViec : lichLamViecs) {
             lichLamViec.InThongTin();
         }
@@ -117,31 +109,62 @@ public class NhanVienBanThoigian extends NhanVien {
     }
 
     public void DangKiLichLamViec() {
-
         int luaChon = 0;
         do {
-            LichLamViec lichLamViec = new LichLamViec();
-            System.out.println(("1. Đăng kí lịch làm việc"));
-            System.out.println("2. Không đăng kí lịch làm việc");
-            System.out.println("3. Thoát");
-            System.out.print("Chọn: ");
+            System.out.println("1. Sáng (7h-11h)");
+            System.out.println("2. Chiều (13h-17h)");
+            System.out.println("3. Tăng ca Tối  (19h-23h)");
+            System.out.print("Chọn ca làm việc: ");
             luaChon = sc.nextInt();
+            sc.nextLine();
             switch (luaChon) {
                 case 1:
-                    lichLamViec.DangKiLichLamViec();
+                    System.out.println("Nhập ngày làm việc dd/MM/yyyy : ");
+                    String ngay = sc.nextLine();
+                    LichLamViec lichLamViec = new LichLamViec();
+                    try {
+                        lichLamViec.setNgayLamViec(new SimpleDateFormat("dd/MM/yyyy").parse(ngay));
+                    } catch (ParseException e) {
+                        System.out.println("Ngày làm việc không hợp lệ.");
+                        e.printStackTrace();
+                    }
+                    lichLamViec.setCaLamViec("Sáng");
                     lichLamViecs.add(lichLamViec);
-                    break;
+                    this.soGioLam += 4;
                 case 2:
-                    System.out.println("Không đăng kí lịch làm việc.");
-                    return;
+                    System.out.println("Nhập ngày làm việc dd/MM/yyyy : ");
+                    String ngay1 = sc.nextLine();
+                    LichLamViec lichLamViec1 = new LichLamViec();
+                    try {
+                        lichLamViec1.setNgayLamViec(new SimpleDateFormat("dd/MM/yyyy").parse(ngay1));
+                    } catch (ParseException e) {
+                        System.out.println("Ngày làm việc không hợp lệ.");
+                        e.printStackTrace();
+                    }
+                    lichLamViec1.setCaLamViec("Chiều");
+                    lichLamViecs.add(lichLamViec1);
+                    this.soGioLam += 4;
+                    break;
                 case 3:
-                    System.out.println("Thoát.");
+                    System.out.println("Nhập ngày làm việc dd/MM/yyyy : ");
+                    String ngay2 = sc.nextLine();
+                    LichLamViec lichLamViec2 = new LichLamViec();
+                    try {
+                        lichLamViec2.setNgayLamViec(new SimpleDateFormat("dd/MM/yyyy").parse(ngay2));
+                    } catch (ParseException e) {
+                        System.out.println("Ngày làm việc không hợp lệ.");
+                        e.printStackTrace();
+                    }
+                    lichLamViec2.setCaLamViec("Tối");
+                    lichLamViecs.add(lichLamViec2);
+                    this.soGioLam += 4;
                     break;
                 default:
                     System.out.println("Lựa chọn không hợp lệ. Vui lòng chọn lại.");
                     break;
             }
         } while (luaChon < 1 || luaChon > 3);
+
     }
 
     @Override
@@ -158,4 +181,40 @@ public class NhanVienBanThoigian extends NhanVien {
     public double TongLuong() {
         return this.soGioLam * luongTheoGio + LuongTangCa() - TienPhat();
     }
+
+    //xuất lịch laàm việc thằng nhân veieen
+    public void xuatFileLichLamViec() {
+        String filePath = "D:/OneDrive - University of Technology and Education/Dai_hoc/2024-2025/th lthdt/Nhom5_THLTHDT_CK/QuuanLyShopQuanAo/src/main/resources/LichLamViec_" + this.getMaNhanVien() + ".txt";
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            writer.write("Lịch làm việc của nhân viên: \n");
+            for (LichLamViec lich : lichLamViecs) {
+                writer.write("Ngày: " + sdf.format(lich.getNgayLamViec()) + ", Ca: " + lich.getCaLamViec());
+                writer.newLine();
+            }
+            writer.write("Tổng số giờ làm: " + soGioLam);
+            writer.newLine();
+            writer.write("Tổng số giờ làm tăng ca: " + soGioLamTangCa);
+            writer.newLine();
+            writer.write("Tổng số giờ nghỉ: " + soGioNghi);
+            writer.newLine();
+            System.out.println("Lịch làm việc đã được lưu tại: " + filePath);
+        } catch (IOException e) {
+            System.err.println("Lỗi ghi file lịch làm việc: " + e.getMessage());
+        }
+    }
+
+    //     in lịch làm việc
+    public void inLichLamViec() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        System.out.println("Lịch làm việc của nhân viên: ");
+        for (LichLamViec lich : lichLamViecs) {
+            System.out.println("Ngày: " + sdf.format(lich.getNgayLamViec()) + ", Ca: " + lich.getCaLamViec());
+        }
+        System.out.println("Tổng số giờ làm: " + soGioLam);
+        System.out.println("Tổng số giờ làm tăng ca: " + soGioLamTangCa);
+        System.out.println("Tổng số giờ nghỉ: " + soGioNghi);
+    }
 }
+
