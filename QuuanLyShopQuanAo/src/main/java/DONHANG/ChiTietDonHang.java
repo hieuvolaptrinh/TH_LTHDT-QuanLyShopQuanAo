@@ -5,6 +5,9 @@ import SANPHAM.PhuKien;
 import SANPHAM.QuanAo;
 import SANPHAM.SanPham;
 
+import javax.imageio.IIOException;
+import java.io.BufferedWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class ChiTietDonHang {
@@ -83,12 +86,18 @@ public class ChiTietDonHang {
         } while (sl <= 0);
         this.soLuong = sl;
     }
-//    in chi tiết đơn hàng
+    //    in chi tiết đơn hàng
     public void inChiTietDonHang() {
         sanPham.xuatTTSP();
         System.out.println("Số lượng: " + soLuong);
         System.out.println("Thành tiền: " + tinhTien());
     }
+    public void inChiTietDonHangToFile(BufferedWriter writer) throws IOException {
+        sanPham.xuatTTSPToFile(writer);
+        writer.write("Số lượng: " + soLuong + "\n");
+        writer.write("Thành tiền: " + tinhTien() + "\n");
+    }
 
 }
+
 

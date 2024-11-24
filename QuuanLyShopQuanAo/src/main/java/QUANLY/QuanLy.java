@@ -66,7 +66,7 @@ public class QuanLy {
 
     //    thống kê số lượng nhân viên trong cửa hàng
     public void thongKeSoLuongNhanVien(DanhSachNhanVien danhSachNhanVien) {
-       danhSachNhanVien.thongKeSoLuongNhanVien();
+        danhSachNhanVien.thongKeSoLuongNhanVien();
 
     }
 
@@ -81,7 +81,12 @@ public class QuanLy {
     public void themNhanVien(DanhSachNhanVien danhSachNhanVien) {
         danhSachNhanVien.ThemNhanVien();
     }
-
+    public void themNhanVienToanThoiGianFromFile(DanhSachNhanVien danhSachNhanVien) {
+        danhSachNhanVien.docFileVaThemNhanVienToanThoiGian();
+    }
+    public void themNhanVienBanThoiGianFromFile(DanhSachNhanVien danhSachNhanVien) {
+        danhSachNhanVien.docFileVaThemNhanVienBanThoiGian();
+    }
     //    tiền trả lương cho nhân viên
     public void tienTraLuongNhanVien(DanhSachNhanVien dsNhanVien) {
         System.out.println("Tổng tiền trả cho nhân viên bán thời gian: ");
@@ -100,20 +105,20 @@ public class QuanLy {
     public void thongKeTienNhapHang(DanhSachSanPham dsSanPham) {
         dsSanPham.tongTienNhapSanPham();
     }
-//    thống kê doanh thu
+    //    thống kê doanh thu
     public void thongKeDoanhThu(DanhSachKhachHang danhSachKhachHang) {
         System.out.println("Tổng doanh thu: " + danhSachKhachHang.tongDoanhThu());
 
     }
-//    xem lịch sử mua hàng
+    //    xem lịch sử mua hàng
     public void xemLichSuMuaHang(DanhSachKhachHang danhSachKhachHang) {
         danhSachKhachHang.lichSuMuaHang();
     }
-//    xuất danh sách khách hàng
+    //    xuất danh sách khách hàng
     public void xuatDanhSachKhachHang(DanhSachKhachHang danhSachKhachHang) {
         danhSachKhachHang.xuatDanhSachKhachHang();
     }
-//    xuất danh sách sản phẩm trong kho
+    //    xuất danh sách sản phẩm trong kho
     public void xuatDanhSachSanPham(DanhSachSanPham dsSanPham) {
         dsSanPham.xuatDSSanPham();
     }

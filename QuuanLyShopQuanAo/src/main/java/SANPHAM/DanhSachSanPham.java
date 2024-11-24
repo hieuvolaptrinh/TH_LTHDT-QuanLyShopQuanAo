@@ -55,7 +55,7 @@ public class DanhSachSanPham {
         } while (luaChon != 4);
     }
 
-//    xuất quần áo
+    //    xuất quần áo
     public void xuatQuanAo(){
         System.out.println("Danh sách quần áo");
         for (SanPham sanPham : danhSachSanPham.values()) {
@@ -65,7 +65,7 @@ public class DanhSachSanPham {
             }
         }
     }
-//    xuất giày dép
+    //    xuất giày dép
     public void xuatGiayDep(){
         System.out.println("Danhs sách giày dép");
         for (SanPham sanPham : danhSachSanPham.values()) {
@@ -75,7 +75,7 @@ public class DanhSachSanPham {
             }
         }
     }
-//    xuất phụ kiện
+    //    xuất phụ kiện
     public void xuatPhuKien(){
         System.out.println("Danh sách phụ kiện");
 

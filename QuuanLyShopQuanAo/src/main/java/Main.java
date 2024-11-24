@@ -88,7 +88,9 @@ public class Main {
             System.out.println("10. Thống kê số lượng nhân viên trong cửa hàng");
             System.out.println("11. Xem danh sách khách hàng");
             System.out.println("12. Xem sản phẩm trong kho");
-            System.out.println("13. Đăng xuất");
+            System.out.println("13. Tuyển thêm nhân viên toàn thời gian từ file");
+            System.out.println("14. Tuyển thêm nhân viên bán thời gian từ file");
+            System.out.println("15. Đăng xuất");
             System.out.print("Chọn chức năng: ");
             try {
                 luaChon = sc.nextInt();
@@ -130,7 +132,12 @@ public class Main {
                     case 12:
                         quanLy.xuatDanhSachSanPham(danhSachSanPham);
                         break;
-                    case 13:
+
+                    case 13 : quanLy.themNhanVienToanThoiGianFromFile(danhSachNhanVien);
+                        break;
+                    case 14 : quanLy.themNhanVienBanThoiGianFromFile(danhSachNhanVien);
+                        break;
+                    case 15:
                         System.out.println("Đăng xuất thành công.");
                         return;
                     default:

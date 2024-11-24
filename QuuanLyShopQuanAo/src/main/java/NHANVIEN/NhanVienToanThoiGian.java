@@ -1,5 +1,10 @@
 package NHANVIEN;
 
+import CHECKTHONGTIN.CheckThongTin;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -15,14 +20,24 @@ public class NhanVienToanThoiGian extends NhanVien {
     private Date ngayVaoLamViec;
 
     // Constructor
-    public NhanVienToanThoiGian(String CCCD, String hoTen, String soDienThoai, String gioiTinh, String email,
-            String diaChi, String maNhanVien, Date ngayVaoLamViec, double heSoLuong, int soCaTangCa, int soNgayNghi) {
-        super(CCCD, hoTen, soDienThoai, gioiTinh, email, diaChi, maNhanVien);
-        this.heSoLuong = heSoLuong;
 
-        this.ngayVaoLamViec = ngayVaoLamViec;
+
+    public NhanVienToanThoiGian(String CCCD, String hoTen, String soDienThoai, String gioiTinh, Date ngaySinh, String email, String diaChi, String maNhanVien, double heSoLuong, int soCaTangCa, int soNgayNghi, Date ngayVaoLamViec) {
+        super(CCCD, hoTen, soDienThoai, gioiTinh, ngaySinh, email, diaChi, maNhanVien);
+        this.heSoLuong = heSoLuong;
         this.soCaTangCa = soCaTangCa;
         this.soNgayNghi = soNgayNghi;
+        this.ngayVaoLamViec = ngayVaoLamViec;
+    }
+
+    public NhanVienToanThoiGian(String CCCD, String hoTen, String soDienThoai, String gioiTinh, Date ngaySinh, String email, String diaChi, String maNhanVien) {
+        super(CCCD, hoTen, soDienThoai, gioiTinh, ngaySinh, email, diaChi, maNhanVien);
+    }
+
+    public NhanVienToanThoiGian(String CCCD, String hoTen, String soDienThoai, String gioiTinh, Date ngaySinh, String email, String diaChi, String maNhanVien, Date ngayVaoLamViec, double heSoLuong) {
+        super(CCCD, hoTen, soDienThoai, gioiTinh, ngaySinh, email, diaChi, maNhanVien);
+        this.ngayVaoLamViec = ngayVaoLamViec;
+        this.heSoLuong = heSoLuong;
     }
 
     public NhanVienToanThoiGian() {
@@ -144,4 +159,5 @@ public class NhanVienToanThoiGian extends NhanVien {
             }
         } while (luaChon < 1 || luaChon > 2);
     }
+
 }

@@ -3,29 +3,31 @@ package DONHANG;
 import PHUONGTHUCTHANHTOAN.ThongTinThanhToan;
 import SANPHAM.SanPham;
 
-
+import java.io.BufferedWriter;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 
 public class DonHang {
-//    private String maDonHang;
+    // private String maDonHang;
     private HashMap<String, ChiTietDonHang> dsChiTietDonHang;
     private ThongTinThanhToan thongTinThanhToan;
     private Date ngayMua;
     private double thanhTien;
-//    private NhanVien nhanVienDaban;
+    // private NhanVien nhanVienDaban;
 
-    public DonHang( Date ngayMua,  ThongTinThanhToan thongTinThanhToan) {
+    public DonHang(Date ngayMua, ThongTinThanhToan thongTinThanhToan) {
         this.dsChiTietDonHang = new HashMap<>();
-//        this.maDonHang = maDonHang;
+        // this.maDonHang = maDonHang;
         this.ngayMua = ngayMua;
-//        this.nhanVienDaban = nhanVienDaban;
+        // this.nhanVienDaban = nhanVienDaban;
         this.thongTinThanhToan = thongTinThanhToan;
     }
+
     public DonHang() {
         this.dsChiTietDonHang = new HashMap<>();
-       this.ngayMua = new Date();
+        this.ngayMua = new Date();
 
     }
 
@@ -61,23 +63,24 @@ public class DonHang {
         this.thongTinThanhToan = thongTinThanhToan;
     }
 
-    //    thêm một chi tiết đơn hàng
-    public void themChiTietDonHang(SanPham sanPham, int soLuong){
+    // thêm một chi tiết đơn hàng
+    public void themChiTietDonHang(SanPham sanPham, int soLuong) {
         System.out.println("----------------------Nhập thông tin đơn hàng:----------------------------");
         System.out.println("nhập thông tin thanh toán ");
         thongTinThanhToan = new ThongTinThanhToan();
         thongTinThanhToan.nhapThongTinThanhToan();
-        ChiTietDonHang chiTietDonHang = new ChiTietDonHang(sanPham,soLuong);
-//        chiTietDonHang.themChiTietDonHang(sanPham,soLuong);
-        dsChiTietDonHang.put(chiTietDonHang.getSanPham().getMaSanPham(),chiTietDonHang);
-        this.thanhTien =thanhTien();
+        ChiTietDonHang chiTietDonHang = new ChiTietDonHang(sanPham, soLuong);
+        // chiTietDonHang.themChiTietDonHang(sanPham,soLuong);
+        dsChiTietDonHang.put(chiTietDonHang.getSanPham().getMaSanPham(), chiTietDonHang);
+        this.thanhTien = thanhTien();
         this.ngayMua = new Date();
     }
-//    in thông tin đơn hàng
-    public void inDonHang(){
+
+    // in thông tin đơn hàng
+    public void inDonHang() {
         System.out.println("--------------------------------------------------");
         System.out.println("Thông tin đơn hàng: ");
-//        System.out.println("Mã đơn hàng: " + maDonHang);
+        // System.out.println("Mã đơn hàng: " + maDonHang);
 
         // Định dạng ngày giờ
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
@@ -93,30 +96,58 @@ public class DonHang {
             chiTiet.inChiTietDonHang();
         }
 
-        System.out.println("Tổng tiền: " + String.format("%.2f",thanhTien) + " VND");
+        System.out.println("Tổng tiền: " + String.format("%.2f", thanhTien) + " VND");
     }
-//    xuất những sản phẩm có trong đơn hàng
-    public void xuatSanPham(){
+
+    public void inDonHangToFile(BufferedWriter writer) throws IOException {
+        writer.write("--------------------------------------------------\n");
+        writer.write("Thông tin đơn hàng: \n");
+
+        // Format date and write it
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String ngayMuaFormatted = formatter.format(ngayMua);
+        writer.write("Ngày mua: " + ngayMuaFormatted + "\n");
+
+        // Write payment details
+        writer.write("Hình thức thanh toán: " + thongTinThanhToan.getHinhThucThanhToan() + "\n");
+        writer.write("Trạng thái thanh toán: " + thongTinThanhToan.getTrangThaiThanhToan() + "\n");
+
+        writer.write("Chi tiết các mặt hàng:\n");
+
+        // Write each product detail
+        for (ChiTietDonHang chiTiet : dsChiTietDonHang.values()) {
+            chiTiet.inChiTietDonHangToFile(writer);
+        }
+
+        writer.write("Tổng tiền: " + String.format("%.2f", thanhTien) + " VND\n");
+    }
+
+    // xuất những sản phẩm có trong đơn hàng
+    public void xuatSanPham() {
         System.out.println("--------------------------------------------------");
         System.out.println("Danh sách sản phẩm: ");
-        for (String key: dsChiTietDonHang.keySet()){
+        for (String key : dsChiTietDonHang.keySet()) {
             System.out.println("-----------");
             dsChiTietDonHang.get(key).getSanPham().xuatTTSP();
         }
     }
-//    thành tiền
-    public double thanhTien(){
+
+    // thành tiền
+    public double thanhTien() {
         double tongTien = 0;
-        for (String key: dsChiTietDonHang.keySet()){
-            tongTien += dsChiTietDonHang.get(key).getSanPham().getGiaBan()* dsChiTietDonHang.get(key).getSanPham().getSoLuong();
+        for (String key : dsChiTietDonHang.keySet()) {
+            tongTien += dsChiTietDonHang.get(key).getSanPham().getGiaBan()
+                    * dsChiTietDonHang.get(key).getSanPham().getSoLuong();
         }
         return tongTien;
     }
-//    tiền lời từ mỗi đơn hàng
-    public double tienLoi(){
+
+    // tiền lời từ mỗi đơn hàng
+    public double tienLoi() {
         double tongTien = 0;
-        for (String key: dsChiTietDonHang.keySet()){
-            tongTien += dsChiTietDonHang.get(key).getSanPham().getGiaBan() - dsChiTietDonHang.get(key).getSanPham().getGiaNhap();
+        for (String key : dsChiTietDonHang.keySet()) {
+            tongTien += dsChiTietDonHang.get(key).getSanPham().getGiaBan()
+                    - dsChiTietDonHang.get(key).getSanPham().getGiaNhap();
         }
         return tongTien;
     }

@@ -1,0 +1,2 @@
+123456789014,Nguyen Van A,0912345678,Nam,01/01/1990,example@gmail.com,123 Le Loi,NV003
+123456789015,Tran Thi B,0987654321,Nu,15/07/1995,beta@gmail.com,456 Nguyen Hue,NV004

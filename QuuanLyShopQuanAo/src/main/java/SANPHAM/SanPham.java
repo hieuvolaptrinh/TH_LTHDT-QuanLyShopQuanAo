@@ -1,5 +1,7 @@
 package SANPHAM;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
@@ -186,6 +188,28 @@ public class SanPham {
             System.out.println("Không có thông tin nhà cung cấp.");
         }
     }
+    public void xuatTTSPToFile(BufferedWriter writer) throws IOException {
+        writer.write("Mã sản phẩm là: " + this.maSanPham + "\n");
+        writer.write("Tên sản phẩm là: " + this.tenSanPham + "\n");
+        writer.write("Giá nhập cua sản phẩm là: " + String.format("%.2f", this.giaNhap) + "\n");
+        writer.write("Giá bán cua sản phẩm là: " + String.format("%.2f", this.giaBan) + "\n");
+        writer.write("Ngày sản xuất: " + this.ngaySanXuat + "\n");
+        writer.write("Số luợng: " + this.soLuong + "\n");
+        writer.write("Chất liệu: " + this.chatLieu + "\n");
+        writer.write("Màu sắc: " + this.mauSac + "\n");
+        writer.write("Mô tả: " + this.moTa + "\n");
+        writer.write("Trạng thái: " + ((this.soLuong > 0) ? "Còn hàng" : "Hết hàng") + "\n");
+
+        // If there's a supplier, print their info
+        if (this.nhaCungCap != null) {
+            writer.write("Thông tin nhà cung cấp:\n");
+            writer.write("  Quốc gia: " + this.nhaCungCap.getQuocGia() + "\n");
+            writer.write("  Tên công ty: " + this.nhaCungCap.getTenCongTy() + "\n");
+            writer.write("  Địa chỉ: " + this.nhaCungCap.getDiaChi() + "\n");
+        } else {
+            writer.write("Không có thông tin nhà cung cấp.\n");
+        }
+    }
     public double capNhatSoLuong(int soLuongCapNhat){
         this.soLuong =  soLuong-soLuongCapNhat ;
         System.out.println("Số lượng sau khi cập nhật là: "+this.soLuong);
@@ -196,7 +220,7 @@ public class SanPham {
         this.trangThai = soLuong > 0;
         System.out.println("Trạng thái sau khi cập nhật số lượng: "+(this.trangThai ? "Còn hàng" : "Hết hàng"));
     }
-//    tính tiền nhập sản phẩm
+    //    tính tiền nhập sản phẩm
     public double tinhTienNhapSanPham(){
         return this.giaNhap * this.soLuong;
     }

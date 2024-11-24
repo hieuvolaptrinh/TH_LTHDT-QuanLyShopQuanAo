@@ -5,7 +5,11 @@ import NGUOI.Nguoi;
 import SANPHAM.DanhSachSanPham;
 import SANPHAM.SanPham;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 public class KhachHang extends Nguoi {
@@ -14,8 +18,9 @@ public class KhachHang extends Nguoi {
     private ArrayList<DonHang> lichSuMuaHang;
 //Constructor
 
-    public KhachHang(String CCCD, String hoTen, String soDienThoai, String gioiTinh, String email, String diaChi, double diemTichLuy, ArrayList<DonHang> lichSuMuaHang) {
-        super(CCCD, hoTen, soDienThoai, gioiTinh, email, diaChi);
+
+    public KhachHang(String CCCD, String hoTen, String soDienThoai, String gioiTinh, Date ngaySinh, String email, String diaChi, double diemTichLuy, ArrayList<DonHang> lichSuMuaHang) {
+        super(CCCD, hoTen, soDienThoai, gioiTinh, ngaySinh, email, diaChi);
         this.diemTichLuy = diemTichLuy;
         this.lichSuMuaHang = lichSuMuaHang;
     }
@@ -129,6 +134,20 @@ public class KhachHang extends Nguoi {
         System.out.println("Lịch sử giao dịch của khách hàng " + hoTen + ":");
         for (DonHang donHang : lichSuMuaHang) {
             donHang.inDonHang();
+        }
+    }
+    public void hienThiLichSuMuaHangToFile() {
+        String filePath = "src/main/resources/lichSuMuaHang_" + hoTen + ".txt";
+        try (FileWriter fileWriter = new FileWriter(filePath, true); // true: ghi tiếp vào file nếu file đã tồn tại
+             BufferedWriter writer = new BufferedWriter(fileWriter)) {
+
+            writer.write("Lịch sử giao dịch của khách hàng " + hoTen + ":\n");
+            for (DonHang donHang : lichSuMuaHang) {
+                donHang.inDonHangToFile(writer); // Hàm này nên được viết để nhận BufferedWriter
+            }
+            System.out.println("Lịch sử mua hàng đã được ghi vào file: " + filePath);
+        } catch (IOException e) {
+            System.out.println("Lỗi khi ghi file: " + e.getMessage());
         }
     }
 

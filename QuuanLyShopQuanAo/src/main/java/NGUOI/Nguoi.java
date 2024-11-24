@@ -17,9 +17,10 @@ public abstract class Nguoi {
     protected String email;
     protected String diaChi;
     // Constructor
-    public Nguoi(String CCCD, String hoTen, String soDienThoai, String gioiTinh, String email, String diaChi) {
+    public Nguoi(String CCCD, String hoTen, String soDienThoai, String gioiTinh,Date ngaySinh, String email, String diaChi) {
         this.CCCD = CCCD;
         this.hoTen = hoTen;
+        this.ngaySinh = ngaySinh;
         this.soDienThoai = soDienThoai;
         this.gioiTinh = gioiTinh;
         this.email = email;

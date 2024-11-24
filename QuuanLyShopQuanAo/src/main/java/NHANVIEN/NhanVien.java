@@ -2,6 +2,7 @@ package NHANVIEN;
 
 import NGUOI.Nguoi;
 
+import java.util.Date;
 import java.util.Scanner;
 
 public abstract class NhanVien extends Nguoi {
@@ -10,10 +11,12 @@ public abstract class NhanVien extends Nguoi {
 
 // Constructor
 
-    public NhanVien(String CCCD, String hoTen, String soDienThoai, String gioiTinh, String email, String diaChi, String maNhanVien) {
-        super(CCCD, hoTen, soDienThoai, gioiTinh, email, diaChi);
+
+    public NhanVien(String CCCD, String hoTen, String soDienThoai, String gioiTinh, Date ngaySinh, String email, String diaChi, String maNhanVien) {
+        super(CCCD, hoTen, soDienThoai, gioiTinh, ngaySinh, email, diaChi);
         this.maNhanVien = maNhanVien;
     }
+
     public NhanVien() {
 
     }

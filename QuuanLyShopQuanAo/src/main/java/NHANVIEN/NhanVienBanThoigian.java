@@ -1,11 +1,12 @@
 package NHANVIEN;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import CHECKTHONGTIN.CheckThongTin;
+
+import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 public class NhanVienBanThoigian extends NhanVien {
@@ -17,12 +18,17 @@ public class NhanVienBanThoigian extends NhanVien {
     ArrayList<LichLamViec> lichLamViecs;
 //Constructor
 
-    public NhanVienBanThoigian(String CCCD, String hoTen, String soDienThoai, String gioiTinh, String email, String diaChi, String maNhanVien, double soGioLam, double soGioLamTangCa, double soGioNghi, ArrayList<LichLamViec> lichLamViecs) {
-        super(CCCD, hoTen, soDienThoai, gioiTinh, email, diaChi, maNhanVien);
+
+    public NhanVienBanThoigian(String CCCD, String hoTen, String soDienThoai, String gioiTinh, Date ngaySinh, String email, String diaChi, String maNhanVien, double soGioLam, double soGioLamTangCa, double soGioNghi, ArrayList<LichLamViec> lichLamViecs) {
+        super(CCCD, hoTen, soDienThoai, gioiTinh, ngaySinh, email, diaChi, maNhanVien);
         this.soGioLam = soGioLam;
         this.soGioLamTangCa = soGioLamTangCa;
         this.soGioNghi = soGioNghi;
         this.lichLamViecs = new ArrayList<>();
+    }
+
+    public NhanVienBanThoigian(String CCCD, String hoTen, String soDienThoai, String gioiTinh, Date ngaySinh, String email, String diaChi, String maNhanVien) {
+        super(CCCD, hoTen, soDienThoai, gioiTinh, ngaySinh, email, diaChi, maNhanVien);
     }
 
     public NhanVienBanThoigian() {
@@ -69,45 +75,58 @@ public class NhanVienBanThoigian extends NhanVien {
     }
 
     //Các phương thức
+//    @Override
+//    public void nhapThongTin() {
+//        super.nhapThongTin();
+//        System.out.println("");
+//        System.out.println("Bạn có muốn đăng kí lịch làm việc cho nhân viên  không? (Có/Không)");
+//        int luaChon = 0;
+//        do {
+//            System.out.println("1. Có");
+//            System.out.println("2. Không");
+//            System.out.print("Chọn: ");
+//            luaChon = sc.nextInt();
+//            sc.nextLine();
+//            switch (luaChon) {
+//                case 1:
+//                    DangKiLichLamViec();
+//                    break;
+//                case 2:
+//                    System.out.println("Không đăng kí lịch làm việc.");
+//                    return;
+//                default:
+//                    System.out.println("Lựa chọn không hợp lệ. Vui lòng chọn lại.");
+//                    break;
+//            }
+//        } while (luaChon < 1 || luaChon > 2);
+//    }
+
+
     @Override
     public void nhapThongTin() {
         super.nhapThongTin();
         System.out.println("");
-        System.out.println("Bạn có muốn đăng kí lịch làm việc cho nhân viên  không? (Có/Không)");
-        int luaChon = 0;
-        do {
-            System.out.println("1. Có");
-            System.out.println("2. Không");
-            System.out.print("Chọn: ");
-            luaChon = sc.nextInt();
-            sc.nextLine();
-            switch (luaChon) {
-                case 1:
-                    DangKiLichLamViec();
-                    break;
-                case 2:
-                    System.out.println("Không đăng kí lịch làm việc.");
-                    return;
-                default:
-                    System.out.println("Lựa chọn không hợp lệ. Vui lòng chọn lại.");
-                    break;
-            }
-        } while (luaChon < 1 || luaChon > 2);
     }
-
     @Override
     public void inThongTin() {
         super.inThongTin();
-        System.out.println("-------------------Lịch làm việc của nhân viên  " + this.getHoTen() + "-------------------");
-        for (LichLamViec lichLamViec : lichLamViecs) {
-            lichLamViec.InThongTin();
-        }
         System.out.println("Số giờ làm: " + this.soGioLam);
         System.out.println("Số giờ làm tăng ca: " + this.soGioLamTangCa);
         System.out.println("Số giờ nghỉ: " + this.soGioNghi);
 
     }
-
+    public void InLichLamViec(){
+        System.out.println("-------------------Lịch làm việc của nhân viên  " + this.getHoTen() + "-------------------");
+        for (LichLamViec lichLamViec : lichLamViecs) {
+            try {
+                lichLamViec.InThongTin();
+            } catch (Exception e) {
+                // Xử lý hoặc bỏ qua ngoại lệ nếu có lỗi xảy ra
+                System.out.println("Có lỗi xảy ra khi in thông tin lịch làm việc: " + e.getMessage());
+                // Bạn có thể bỏ qua hoặc xử lý khác tùy theo yêu cầu
+            }
+        }
+    }
     public void DangKiLichLamViec() {
         int luaChon = 0;
         do {
@@ -216,5 +235,6 @@ public class NhanVienBanThoigian extends NhanVien {
         System.out.println("Tổng số giờ làm tăng ca: " + soGioLamTangCa);
         System.out.println("Tổng số giờ nghỉ: " + soGioNghi);
     }
+
 }
 
