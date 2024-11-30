@@ -87,6 +87,11 @@ public class QuanLy {
     public void themNhanVienBanThoiGianFromFile(DanhSachNhanVien danhSachNhanVien) {
         danhSachNhanVien.docFileVaThemNhanVienBanThoiGian();
     }
+    public void themSanPhamFromFile(DanhSachSanPham danhSachSanPham)
+    {
+        danhSachSanPham.docFileVaThemSanPham();
+    }
+
     //    tiền trả lương cho nhân viên
     public void tienTraLuongNhanVien(DanhSachNhanVien dsNhanVien) {
         System.out.println("Tổng tiền trả cho nhân viên bán thời gian: ");
@@ -122,4 +127,5 @@ public class QuanLy {
     public void xuatDanhSachSanPham(DanhSachSanPham dsSanPham) {
         dsSanPham.xuatDSSanPham();
     }
+
 }

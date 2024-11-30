@@ -17,6 +17,10 @@ public abstract class NhanVien extends Nguoi {
         this.maNhanVien = maNhanVien;
     }
 
+    public NhanVien(String maNhanVien) {
+        this.maNhanVien = maNhanVien;
+    }
+
     public NhanVien() {
 
     }

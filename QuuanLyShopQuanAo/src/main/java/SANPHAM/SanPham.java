@@ -1,5 +1,7 @@
 package SANPHAM;
 
+import INTERFACE.File;
+
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
