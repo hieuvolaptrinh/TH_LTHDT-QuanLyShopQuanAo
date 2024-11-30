@@ -1,9 +1,16 @@
 package SANPHAM;
 
+import INTERFACE.File;
+
 import java.util.HashMap;
 import java.util.Scanner;
-
-public class DanhSachSanPham {
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+public class DanhSachSanPham implements File {
     Scanner sc = new Scanner(System.in);
     private HashMap<String, SanPham> danhSachSanPham;
 
@@ -54,6 +61,72 @@ public class DanhSachSanPham {
             }
         } while (luaChon != 4);
     }
+    public void docFileVaThemSanPham() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        dateFormat.setLenient(false);
+
+        try (BufferedReader br = new BufferedReader(new FileReader(docSanPham))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split(",");
+
+                if (data.length >= 11) {
+                    try {
+                        String loaiSanPham = data[0].trim();
+                        String maSanPham = data[1].trim();
+                        String tenSanPham = data[2].trim();
+                        double giaNhap = Double.parseDouble(data[3].trim());
+                        double giaBan = Double.parseDouble(data[4].trim());
+                        Date ngaySanXuat = dateFormat.parse(data[5].trim());
+                        int soLuong = Integer.parseInt(data[6].trim());
+                        String chatLieu = data[7].trim();
+                        String moTa = data[8].trim();
+                        boolean trangThai = Boolean.parseBoolean(data[9].trim());
+                        String mauSac = data[10].trim();
+
+                        SanPham sanPham = null;
+
+                        switch (loaiSanPham) {
+                            case "QuanAo":
+                                sanPham = new QuanAo(maSanPham, tenSanPham, giaNhap, giaBan, ngaySanXuat, soLuong, chatLieu, moTa, trangThai, mauSac, data[11].trim(), data[12].trim(), data[13].trim());
+                                break;
+                            case "PhuKien":
+                                sanPham = new PhuKien(maSanPham, tenSanPham, giaNhap, giaBan, ngaySanXuat, soLuong, chatLieu, moTa, trangThai, mauSac, data[11].trim());
+                                break;
+                            case "GiayDep":
+                                sanPham = new GiayDep(maSanPham, tenSanPham, giaNhap, giaBan, ngaySanXuat, soLuong, chatLieu, moTa, trangThai, mauSac, data[11].trim(), Integer.parseInt(data[12].trim()));
+                                break;
+                            default:
+                                System.out.println("Loại sản phẩm không hợp lệ: " + loaiSanPham);
+                                continue;
+                        }
+
+                        themSanPhamVaoDanhSach(sanPham);
+
+                    } catch (ParseException e) {
+                        System.out.println("Lỗi định dạng ngày: " + e.getMessage());
+                    } catch (NumberFormatException e) {
+                        System.out.println("Lỗi định dạng số: " + e.getMessage());
+                    }
+                } else {
+                    System.out.println("Dòng dữ liệu không hợp lệ (thiếu thông tin): " + line);
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Lỗi khi đọc file: " + e.getMessage());
+        }
+    }
+
+    // Thêm sản phẩm vào danh sách và kiểm tra trùng lặp
+    private void themSanPhamVaoDanhSach(SanPham sanPham) {
+        if (danhSachSanPham.containsKey(sanPham.getMaSanPham())) {
+            System.out.println("Mã sản phẩm đã tồn tại: " + sanPham.getMaSanPham());
+        } else {
+            danhSachSanPham.put(sanPham.getMaSanPham(), sanPham);
+            System.out.println("Thêm sản phẩm: " + sanPham.getTenSanPham() + " thành công!");
+        }
+    }
+
 
     //    xuất quần áo
     public void xuatQuanAo(){

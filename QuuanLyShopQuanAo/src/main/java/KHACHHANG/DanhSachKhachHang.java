@@ -15,7 +15,6 @@ public class DanhSachKhachHang {
     public void dangKiKhachHang() {
         KhachHang khachHang = new KhachHang();
         khachHang.nhapThongTin();
-        danhSachKhachHang.put(khachHang.getCCCD(), khachHang);
         System.out.println("Bạn đã đăng kí thành công");
     }
 //    đăng nhập khách hàng
