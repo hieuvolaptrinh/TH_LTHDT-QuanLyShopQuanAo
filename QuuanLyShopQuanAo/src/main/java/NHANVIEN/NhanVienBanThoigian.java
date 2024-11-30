@@ -1,13 +1,10 @@
 package NHANVIEN;
 
-import CHECKTHONGTIN.CheckThongTin;
-
 import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Scanner;
 
 public class NhanVienBanThoigian extends NhanVien {
     private final static double luongTheoGio = 25000;
@@ -16,10 +13,11 @@ public class NhanVienBanThoigian extends NhanVien {
     private double soGioLamTangCa;
     private double soGioNghi;
     ArrayList<LichLamViec> lichLamViecs;
-//Constructor
+    // Constructor
 
-
-    public NhanVienBanThoigian(String CCCD, String hoTen, String soDienThoai, String gioiTinh, Date ngaySinh, String email, String diaChi, String maNhanVien, double soGioLam, double soGioLamTangCa, double soGioNghi, ArrayList<LichLamViec> lichLamViecs) {
+    public NhanVienBanThoigian(String CCCD, String hoTen, String soDienThoai, String gioiTinh, Date ngaySinh,
+            String email, String diaChi, String maNhanVien, double soGioLam, double soGioLamTangCa, double soGioNghi,
+            ArrayList<LichLamViec> lichLamViecs) {
         super(CCCD, hoTen, soDienThoai, gioiTinh, ngaySinh, email, diaChi, maNhanVien);
         this.soGioLam = soGioLam;
         this.soGioLamTangCa = soGioLamTangCa;
@@ -27,7 +25,8 @@ public class NhanVienBanThoigian extends NhanVien {
         this.lichLamViecs = new ArrayList<>();
     }
 
-    public NhanVienBanThoigian(String CCCD, String hoTen, String soDienThoai, String gioiTinh, Date ngaySinh, String email, String diaChi, String maNhanVien) {
+    public NhanVienBanThoigian(String CCCD, String hoTen, String soDienThoai, String gioiTinh, Date ngaySinh,
+            String email, String diaChi, String maNhanVien) {
         super(CCCD, hoTen, soDienThoai, gioiTinh, ngaySinh, email, diaChi, maNhanVien);
     }
 
@@ -39,8 +38,7 @@ public class NhanVienBanThoigian extends NhanVien {
         this.lichLamViecs = new ArrayList<>();
     }
 
-//Getter and Setter
-
+    // Getter and Setter
 
     public double getSoGioLam() {
         return soGioLam;
@@ -74,39 +72,40 @@ public class NhanVienBanThoigian extends NhanVien {
         this.lichLamViecs = lichLamViecs;
     }
 
-    //Các phương thức
-//    @Override
-//    public void nhapThongTin() {
-//        super.nhapThongTin();
-//        System.out.println("");
-//        System.out.println("Bạn có muốn đăng kí lịch làm việc cho nhân viên  không? (Có/Không)");
-//        int luaChon = 0;
-//        do {
-//            System.out.println("1. Có");
-//            System.out.println("2. Không");
-//            System.out.print("Chọn: ");
-//            luaChon = sc.nextInt();
-//            sc.nextLine();
-//            switch (luaChon) {
-//                case 1:
-//                    DangKiLichLamViec();
-//                    break;
-//                case 2:
-//                    System.out.println("Không đăng kí lịch làm việc.");
-//                    return;
-//                default:
-//                    System.out.println("Lựa chọn không hợp lệ. Vui lòng chọn lại.");
-//                    break;
-//            }
-//        } while (luaChon < 1 || luaChon > 2);
-//    }
-
+    // Các phương thức
+    // @Override
+    // public void nhapThongTin() {
+    // super.nhapThongTin();
+    // System.out.println("");
+    // System.out.println("Bạn có muốn đăng kí lịch làm việc cho nhân viên không?
+    // (Có/Không)");
+    // int luaChon = 0;
+    // do {
+    // System.out.println("1. Có");
+    // System.out.println("2. Không");
+    // System.out.print("Chọn: ");
+    // luaChon = sc.nextInt();
+    // sc.nextLine();
+    // switch (luaChon) {
+    // case 1:
+    // DangKiLichLamViec();
+    // break;
+    // case 2:
+    // System.out.println("Không đăng kí lịch làm việc.");
+    // return;
+    // default:
+    // System.out.println("Lựa chọn không hợp lệ. Vui lòng chọn lại.");
+    // break;
+    // }
+    // } while (luaChon < 1 || luaChon > 2);
+    // }
 
     @Override
     public void nhapThongTin() {
         super.nhapThongTin();
         System.out.println("");
     }
+
     @Override
     public void inThongTin() {
         super.inThongTin();
@@ -115,8 +114,10 @@ public class NhanVienBanThoigian extends NhanVien {
         System.out.println("Số giờ nghỉ: " + this.soGioNghi);
 
     }
-    public void InLichLamViec(){
-        System.out.println("-------------------Lịch làm việc của nhân viên  " + this.getHoTen() + "-------------------");
+
+    public void InLichLamViec() {
+        System.out
+                .println("-------------------Lịch làm việc của nhân viên  " + this.getHoTen() + "-------------------");
         for (LichLamViec lichLamViec : lichLamViecs) {
             try {
                 lichLamViec.InThongTin();
@@ -127,6 +128,7 @@ public class NhanVienBanThoigian extends NhanVien {
             }
         }
     }
+
     public void DangKiLichLamViec() {
         int luaChon = 0;
         do {
@@ -201,9 +203,14 @@ public class NhanVienBanThoigian extends NhanVien {
         return this.soGioLam * luongTheoGio + LuongTangCa() - TienPhat();
     }
 
-    //xuất lịch laàm việc thằng nhân veieen
+    // xuất lịch laàm việc thằng nhân veieen
     public void xuatFileLichLamViec() {
-        String filePath = "D:/OneDrive - University of Technology and Education/Dai_hoc/2024-2025/th lthdt/Nhom5_THLTHDT_CK/QuuanLyShopQuanAo/src/main/resources/LichLamViec_" + this.getMaNhanVien() + ".txt";
+        String filePath = "src/main/resources/LichLamViec_"
+                + this.getMaNhanVien() + ".txt";
+        // String filePath = "D:/OneDrive - University of Technology and
+        // Education/Dai_hoc/2024-2025/th
+        // lthdt/Nhom5_THLTHDT_CK/QuuanLyShopQuanAo/src/main/resources/LichLamViec_"
+        // + this.getMaNhanVien() + ".txt";
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -224,7 +231,7 @@ public class NhanVienBanThoigian extends NhanVien {
         }
     }
 
-    //     in lịch làm việc
+    // in lịch làm việc
     public void inLichLamViec() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         System.out.println("Lịch làm việc của nhân viên: ");
@@ -237,4 +244,3 @@ public class NhanVienBanThoigian extends NhanVien {
     }
 
 }
-
