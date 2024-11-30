@@ -1,0 +1,3 @@
+QuanAo,SP001,Áo Sơ Mi Nam,200000,300000,01/01/2023,50,Cotton,Áo sơ mi nam cao cấp, true, Trắng,L,XL,No
+QuanAo,SP002,Áo Sơ Mi Nam,200000,300000,01/01/2023,50,Cotton,Áo sơ mi nam cao cấp, true, Trắng,L,XL,No
+GiayDep,GD001,Giày Thể Thao Nam,150000,250000,01/06/2023,75,Da,Giày thể thao nam cao cấp,true,Đen,42,3,No

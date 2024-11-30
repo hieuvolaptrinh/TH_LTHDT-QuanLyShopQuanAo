@@ -70,7 +70,7 @@ public class DanhSachSanPham implements File {
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(",");
 
-                if (data.length >= 11) {
+                if (data.length >= 14) {
                     try {
                         String loaiSanPham = data[0].trim();
                         String maSanPham = data[1].trim();
