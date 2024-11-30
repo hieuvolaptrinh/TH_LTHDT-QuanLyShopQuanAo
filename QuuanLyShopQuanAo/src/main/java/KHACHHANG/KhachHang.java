@@ -14,6 +14,7 @@ import java.util.Scanner;
 
 public class KhachHang extends Nguoi {
     Scanner sc = new Scanner(System.in);
+    private String matKhau;
     private double diemTichLuy;
     private ArrayList<DonHang> lichSuMuaHang;
 //Constructor
