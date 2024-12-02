@@ -1,3 +1,4 @@
+
 import NHANVIEN.DanhSachNhanVien;
 import KHACHHANG.DanhSachKhachHang;
 import NHANVIEN.NhanVien;
@@ -7,6 +8,8 @@ import QUANLY.QuanLy;
 import SANPHAM.DanhSachSanPham;
 import KHACHHANG.KhachHang;
 import DONHANG.DonHang;
+import GIAODIEN.LoginADMIN;
+
 import SANPHAM.SanPham;
 
 import java.util.InputMismatchException;
@@ -19,6 +22,7 @@ public class Main {
         DanhSachNhanVien danhSachNhanVien = new DanhSachNhanVien();
         DanhSachKhachHang danhSachKhachHang = new DanhSachKhachHang();
         DanhSachSanPham danhSachSanPham = new DanhSachSanPham();
+        LoginADMIN loginAdmin= new LoginADMIN(danhSachNhanVien, danhSachKhachHang, danhSachSanPham);
 
         int luaChonDangNhap = 0;
         do {
@@ -26,7 +30,8 @@ public class Main {
             System.out.println("1. Đăng nhập với quyền Admin");
             System.out.println("2. Đăng nhập với quyền Nhân viên");
             System.out.println("3. Truy cập quyền Khách hàng");
-            System.out.println("4. Thoát");
+            System.out.println("4. Sử dụng giao diện đồ họa");
+            System.out.println("0. Thoát");
             System.out.print("Chọn quyền truy cập: ");
             try {
                 luaChonDangNhap = sc.nextInt();
@@ -41,7 +46,9 @@ public class Main {
                     case 3:
                         menuKhachHang(sc, danhSachKhachHang, danhSachSanPham);
                         break;
-                    case 4:
+                   case 4:
+                        loginAdmin.setVisible(true);
+                    case 0:
                         System.out.println("Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi.");
                         break;
                     default:
@@ -51,7 +58,7 @@ public class Main {
                 System.out.println("Lỗi: Vui lòng nhập số để chọn quyền truy cập.");
                 sc.nextLine();
             }
-        } while (luaChonDangNhap != 4);
+        } while (luaChonDangNhap != 0);
         sc.close();
     }
 

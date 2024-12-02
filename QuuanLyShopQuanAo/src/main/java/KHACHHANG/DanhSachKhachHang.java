@@ -11,6 +11,14 @@ public class DanhSachKhachHang {
         this.danhSachKhachHang = new HashMap<>();
     }
 
+    public HashMap<String, KhachHang> getDanhSachKhachHang() {
+        return danhSachKhachHang;
+    }
+
+    public void setDanhSachKhachHang(HashMap<String, KhachHang> danhSachKhachHang) {
+        this.danhSachKhachHang = danhSachKhachHang;
+    }
+
     //    thêm khách hàng
     public void dangKiKhachHang() {
         KhachHang khachHang = new KhachHang();

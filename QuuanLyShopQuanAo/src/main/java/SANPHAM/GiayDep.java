@@ -17,6 +17,23 @@ public class GiayDep extends SanPham {
 
     }
 
+    public String getLoaiGiayDep() {
+        return loaiGiayDep;
+    }
+
+    public void setLoaiGiayDep(String loaiGiayDep) {
+        this.loaiGiayDep = loaiGiayDep;
+    }
+
+    public int getSizeGD() {
+        return sizeGD;
+    }
+
+    public void setSizeGD(int sizeGD) {
+        this.sizeGD = sizeGD;
+    }
+    
+
     @Override
     public void nhapTTSP() {
         super.nhapTTSP();

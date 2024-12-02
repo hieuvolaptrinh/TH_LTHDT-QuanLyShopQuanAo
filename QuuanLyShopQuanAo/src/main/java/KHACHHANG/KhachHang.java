@@ -20,9 +20,10 @@ public class KhachHang extends Nguoi {
 //Constructor
 
 
-    public KhachHang(String CCCD, String hoTen, String soDienThoai, String gioiTinh, Date ngaySinh, String email, String diaChi, double diemTichLuy, ArrayList<DonHang> lichSuMuaHang) {
+    public KhachHang(String CCCD, String hoTen, String soDienThoai, String gioiTinh, Date ngaySinh, String email, String diaChi, double diemTichLuy,String matKhau, ArrayList<DonHang> lichSuMuaHang) {
         super(CCCD, hoTen, soDienThoai, gioiTinh, ngaySinh, email, diaChi);
         this.diemTichLuy = diemTichLuy;
+        this.matKhau= matKhau;
         this.lichSuMuaHang = lichSuMuaHang;
     }
 
@@ -51,6 +52,8 @@ public class KhachHang extends Nguoi {
     @Override
     public void nhapThongTin() {
         super.nhapThongTin();
+        System.out.println("Nhập mật khẩu mà bạn muốn đăng kí");
+        this.matKhau= sc.nextLine();
     }
 
     @Override

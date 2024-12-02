@@ -20,6 +20,14 @@ public class DanhSachNhanVien implements File {
         this.danhSachNhanVien = new HashMap<>();
     }
 
+    public HashMap<String, NhanVien> getDanhSachNhanVien() {
+        return danhSachNhanVien;
+    }
+
+    public void setDanhSachNhanVien(HashMap<String, NhanVien> danhSachNhanVien) {
+        this.danhSachNhanVien = danhSachNhanVien;
+    }
+
     // thêm nhân viên
     public void ThemNhanVien() {
         int luaChon;
