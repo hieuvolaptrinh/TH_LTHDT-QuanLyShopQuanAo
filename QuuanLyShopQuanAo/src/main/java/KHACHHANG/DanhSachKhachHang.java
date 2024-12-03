@@ -26,12 +26,17 @@ public class DanhSachKhachHang {
         System.out.println("Bạn đã đăng kí thành công");
     }
 //    đăng nhập khách hàng
-    public KhachHang dangNhapKhachHang(String CCCD) {
+    public KhachHang dangNhapKhachHang(String CCCD, String matKhau) {
         if(!danhSachKhachHang.containsKey(CCCD)) {
             System.out.println("Không tìm thấy khách hàng");
             return null;
         }
-        return danhSachKhachHang.get(CCCD);
+        KhachHang khachHang= danhSachKhachHang.get(CCCD);
+        if (!khachHang.getMatKhau().equals(matKhau)) {
+            System.out.println("Sai mật khẩu");
+            return null;
+        }
+        return khachHang;
     }
 //    xem thông tin khách hàng
     public void xemThongTinKhachHang() {

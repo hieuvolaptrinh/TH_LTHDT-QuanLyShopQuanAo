@@ -20,7 +20,7 @@ public class KhachHang extends Nguoi {
 //Constructor
 
 
-    public KhachHang(String CCCD, String hoTen, String soDienThoai, String gioiTinh, Date ngaySinh, String email, String diaChi, double diemTichLuy,String matKhau, ArrayList<DonHang> lichSuMuaHang) {
+    public KhachHang(String CCCD, String hoTen, String soDienThoai, String gioiTinh, Date ngaySinh, String email, String diaChi, double diemTichLuy,String matKhau, ArrayList<DonHang> lichSuMuaHang ) {
         super(CCCD, hoTen, soDienThoai, gioiTinh, ngaySinh, email, diaChi);
         this.diemTichLuy = diemTichLuy;
         this.matKhau= matKhau;
@@ -34,6 +34,14 @@ public class KhachHang extends Nguoi {
     //Getter and Setter
     public double getDiemTichLuy() {
         return diemTichLuy;
+    }
+
+    public String getMatKhau() {
+        return matKhau;
+    }
+
+    public void setMatKhau(String matKhau) {
+        this.matKhau = matKhau;
     }
 
     public void setDiemTichLuy(double diemTichLuy) {

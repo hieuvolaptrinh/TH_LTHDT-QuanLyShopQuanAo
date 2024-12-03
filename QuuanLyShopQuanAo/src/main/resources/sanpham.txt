@@ -1,10 +1,4 @@
-<<<<<<< HEAD
 QuanAo,QA001,Áo Thun,100000,150000,01/11/2023,50,Cotton,Mô tả áo thun,true,Đen,S,Nam,Ngắn tay
 GiayDep,GD001,Giày Thể Thao,300000,500000,15/10/2023,30,Da,Mô tả giày,true,Trắng,Nike,42
 PhuKien,PK001,Kính Râm,200000,300000,20/10/2023,20,Nhựa,Mô tả kính,true,Đen,Chống tia UV
 QuanAo,QA002,Áo Khoác,250000,400000,05/09/2023,20,Len,Mô tả áo khoác,true,Xanh,L,Nữ,Dài tay
-=======
-QuanAo,SP001,Áo Sơ Mi Nam,200000,300000,01/01/2023,50,Cotton,Áo sơ mi nam cao cấp, true, Trắng,L,XL,No
-QuanAo,SP002,Áo Sơ Mi Nam,200000,300000,01/01/2023,50,Cotton,Áo sơ mi nam cao cấp, true, Trắng,L,XL,No
-GiayDep,GD001,Giày Thể Thao Nam,150000,250000,01/06/2023,75,Da,Giày thể thao nam cao cấp,true,Đen,42,3,No
->>>>>>> b7597d0f64fe4c8838c0085e1d019ab231ba768e

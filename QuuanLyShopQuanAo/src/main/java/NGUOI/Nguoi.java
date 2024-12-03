@@ -92,7 +92,7 @@ public abstract class Nguoi {
         do{
             this.CCCD = sc.nextLine();
             if(!CheckThongTin.kiemTraCCCD(this.CCCD)){
-                System.out.println("Căn cước công dân không hợp lệ. Vui lòng nhập lại. Căn cước phải đủ 12 số ");
+                System.err.println("Căn cước công dân không hợp lệ. Vui lòng nhập lại. Căn cước phải đủ 12 số ");
             }
         }while(!CheckThongTin.kiemTraCCCD(this.CCCD));
         System.out.print("Nhập họ và tên: ");

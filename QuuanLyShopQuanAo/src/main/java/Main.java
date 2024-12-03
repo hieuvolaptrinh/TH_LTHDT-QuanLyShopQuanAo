@@ -16,6 +16,14 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
+    // Các mã ANSI escape code cho màu sắc
+    public static final String RESET = "\u001B[0m";  // Reset màu
+    public static final String RED = "\u001B[31m";
+    public static final String GREEN = "\u001B[32m";
+    public static final String YELLOW = "\u001B[33m";
+    public static final String BLUE = "\u001B[34m";
+    public static final String PURPLE = "\u001B[35m";
+    public static final String CYAN = "\u001B[36m";
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         QuanLy quanLy = new QuanLy();
@@ -26,12 +34,12 @@ public class Main {
 
         int luaChonDangNhap = 0;
         do {
-            System.out.println("***** CHÀO MỪNG ĐẾN VỚI HỆ THỐNG QUẢN LÝ CỬA HÀNG *****");
-            System.out.println("1. Đăng nhập với quyền Admin");
+            System.out.println(PURPLE +"***** CHÀO MỪNG ĐẾN VỚI HỆ THỐNG QUẢN LÝ CỬA HÀNG *****" + RESET);
+            System.out.println(GREEN +"1. Đăng nhập với quyền Admin");
             System.out.println("2. Đăng nhập với quyền Nhân viên");
             System.out.println("3. Truy cập quyền Khách hàng");
             System.out.println("4. Sử dụng giao diện đồ họa");
-            System.out.println("0. Thoát");
+            System.out.println("0. Thoát" + RESET);
             System.out.print("Chọn quyền truy cập: ");
             try {
                 luaChonDangNhap = sc.nextInt();
@@ -82,8 +90,8 @@ public class Main {
                                   DanhSachNhanVien danhSachNhanVien, DanhSachKhachHang danhSachKhachHang) {
         int luaChon;
         do {
-            System.out.println("***** MENU QUẢN TRỊ VIÊN *****");
-            System.out.println("1. Xem danh sách nhân viên");
+            System.out.println(PURPLE +"***** MENU QUẢN TRỊ VIÊN *****" + RESET);
+            System.out.println(BLUE+ "1. Xem danh sách nhân viên");
             System.out.println("2. Đuổi việc nhân viên");
             System.out.println("3. Thống kê tiền trả lương cho nhân viên");
             System.out.println("4. Thống kê doanh thu từ khách hàng");
@@ -98,7 +106,7 @@ public class Main {
             System.out.println("13. Tuyển thêm nhân viên toàn thời gian từ file");
             System.out.println("14. Tuyển thêm nhân viên bán thời gian từ file");
             System.out.println("15. Thêm mặt hàng từ file");
-            System.out.println("16. Đăng xuất");
+            System.out.println("16. Đăng xuất" + RESET);
             System.out.print("Chọn chức năng: ");
             try {
                 luaChon = sc.nextInt();
@@ -227,13 +235,13 @@ public class Main {
     private static void menuNhanVienBanThoiGian(Scanner sc, DanhSachSanPham danhSachSanPham, DanhSachKhachHang danhSachKhachHang, DanhSachNhanVien danhSachNhanVien, NhanVienBanThoigian nhanVienBanThoigian) {
         int luaChon;
         do {
-            System.out.println("***** MENU NHÂN VIÊN *****");
-            System.out.println("1. Xem danh sách sản phẩm");
+            System.out.println(PURPLE+ "***** MENU NHÂN VIÊN *****" + RESET);
+            System.out.println(BLUE+ "1. Xem danh sách sản phẩm");
             System.out.println("2. Xem danh sách khách hàng");
             System.out.println("3. Đăng ki lich lam viec");
             System.out.println("4. Xem lịch làm việc");
             System.out.println("5. Phoo tô lịch làm viêc ( ghi ra file)");
-            System.out.println("0. Đăng xuất");
+            System.out.println("0. Đăng xuất" + RESET);
             System.out.print("Chọn chức năng: ");
             try {
                 luaChon = sc.nextInt();
@@ -271,11 +279,11 @@ public class Main {
     private static void menuKhachHang(Scanner sc, DanhSachKhachHang danhSachKhachHang, DanhSachSanPham danhSachSanPham) {
         int luaChon;
         do {
-            System.out.println("***** MENU KHÁCH HÀNG *****");
-            System.out.println("1. Đăng ký tài khoản mới");
+            System.out.println(PURPLE+ "***** MENU KHÁCH HÀNG *****" + RESET);
+            System.out.println(YELLOW +"1. Đăng ký tài khoản mới"  );
             System.out.println("2. Đăng nhập");
             System.out.println("3. Xem danh sách sản phẩm");
-            System.out.println("4. Thoát");
+            System.out.println("4. Thoát" + RESET);
             System.out.print("Chọn chức năng: ");
             try {
                 luaChon = sc.nextInt();
@@ -287,7 +295,9 @@ public class Main {
                     case 2:
                         System.out.print("Nhập CCCD: ");
                         String cccd = sc.nextLine();
-                        KhachHang khachHang = danhSachKhachHang.dangNhapKhachHang(cccd);
+                        System.out.println("Nhập mật khẩu: ");
+                        String matKhau = sc.nextLine();
+                        KhachHang khachHang = danhSachKhachHang.dangNhapKhachHang(cccd, matKhau);
                         if (khachHang != null) {
                             // Nếu đăng nhập thành công, hiển thị menu
                             menuKhachHangDaDangNhap(sc, khachHang, danhSachSanPham);
@@ -316,11 +326,11 @@ public class Main {
     private static void menuKhachHangDaDangNhap(Scanner sc, KhachHang khachHang, DanhSachSanPham danhSachSanPham) {
         int luaChon;
         do {
-            System.out.println("***** MENU KHÁCH HÀNG ĐÃ ĐĂNG NHẬP *****");
-            System.out.println("1. Xem thông tin cá nhân");
+            System.out.println(PURPLE+ "***** MENU KHÁCH HÀNG ĐÃ ĐĂNG NHẬP *****" + RESET);
+            System.out.println(YELLOW+ "1. Xem thông tin cá nhân" );
             System.out.println("2. Xem lịch sử mua hàng");
             System.out.println("3. Mua hàng");
-            System.out.println("4. Đăng xuất");
+            System.out.println("4. Đăng xuất" + RESET);
             System.out.print("Chọn chức năng: ");
             try {
                 luaChon = sc.nextInt();
