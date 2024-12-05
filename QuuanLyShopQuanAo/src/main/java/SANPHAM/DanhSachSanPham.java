@@ -191,8 +191,11 @@ public class DanhSachSanPham implements File {
             return;
         }
         this.xuatGiayDep();
+        System.out.println("----------------------------------------");
         this.xuatQuanAo();
+        System.out.println("----------------------------------------");
         this.xuatPhuKien();
+        System.out.println("----------------------------------------");
 
     }
 

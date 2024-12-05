@@ -24,18 +24,19 @@ public class Main {
     public static final String BLUE = "\u001B[34m";
     public static final String PURPLE = "\u001B[35m";
     public static final String CYAN = "\u001B[36m";
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         QuanLy quanLy = new QuanLy();
         DanhSachNhanVien danhSachNhanVien = new DanhSachNhanVien();
         DanhSachKhachHang danhSachKhachHang = new DanhSachKhachHang();
         DanhSachSanPham danhSachSanPham = new DanhSachSanPham();
-        LoginADMIN loginAdmin= new LoginADMIN(danhSachNhanVien, danhSachKhachHang, danhSachSanPham);
+        LoginADMIN loginAdmin = new LoginADMIN(danhSachNhanVien, danhSachKhachHang, danhSachSanPham);
 
         int luaChonDangNhap = 0;
         do {
-            System.out.println(PURPLE +"***** CHÀO MỪNG ĐẾN VỚI HỆ THỐNG QUẢN LÝ CỬA HÀNG *****" + RESET);
-            System.out.println(GREEN +"1. Đăng nhập với quyền Admin");
+            System.out.println(PURPLE + "***** CHÀO MỪNG ĐẾN VỚI HỆ THỐNG QUẢN LÝ CỬA HÀNG *****" + RESET);
+            System.out.println(GREEN + "1. Đăng nhập với quyền Admin");
             System.out.println("2. Đăng nhập với quyền Nhân viên");
             System.out.println("3. Truy cập quyền Khách hàng");
             System.out.println("4. Sử dụng giao diện đồ họa");
@@ -54,7 +55,7 @@ public class Main {
                     case 3:
                         menuKhachHang(sc, danhSachKhachHang, danhSachSanPham);
                         break;
-                   case 4:
+                    case 4:
                         loginAdmin.setVisible(true);
                     case 0:
                         System.out.println("Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi.");
@@ -90,8 +91,8 @@ public class Main {
                                   DanhSachNhanVien danhSachNhanVien, DanhSachKhachHang danhSachKhachHang) {
         int luaChon;
         do {
-            System.out.println(PURPLE +"***** MENU QUẢN TRỊ VIÊN *****" + RESET);
-            System.out.println(BLUE+ "1. Xem danh sách nhân viên");
+            System.out.println(PURPLE + "***** MENU QUẢN TRỊ VIÊN *****" + RESET);
+            System.out.println(BLUE + "1. Xem danh sách nhân viên");
             System.out.println("2. Đuổi việc nhân viên");
             System.out.println("3. Thống kê tiền trả lương cho nhân viên");
             System.out.println("4. Thống kê doanh thu từ khách hàng");
@@ -149,11 +150,14 @@ public class Main {
                         quanLy.xuatDanhSachSanPham(danhSachSanPham);
                         break;
 
-                    case 13 : quanLy.themNhanVienToanThoiGianFromFile(danhSachNhanVien);
+                    case 13:
+                        quanLy.themNhanVienToanThoiGianFromFile(danhSachNhanVien);
                         break;
-                    case 14 : quanLy.themNhanVienBanThoiGianFromFile(danhSachNhanVien);
+                    case 14:
+                        quanLy.themNhanVienBanThoiGianFromFile(danhSachNhanVien);
                         break;
-                    case 15: quanLy.themSanPhamFromFile((danhSachSanPham));
+                    case 15:
+                        quanLy.themSanPhamFromFile((danhSachSanPham));
                         break;
                     case 16:
                         System.out.println("Đăng xuất thành công.");
@@ -235,8 +239,8 @@ public class Main {
     private static void menuNhanVienBanThoiGian(Scanner sc, DanhSachSanPham danhSachSanPham, DanhSachKhachHang danhSachKhachHang, DanhSachNhanVien danhSachNhanVien, NhanVienBanThoigian nhanVienBanThoigian) {
         int luaChon;
         do {
-            System.out.println(PURPLE+ "***** MENU NHÂN VIÊN *****" + RESET);
-            System.out.println(BLUE+ "1. Xem danh sách sản phẩm");
+            System.out.println(PURPLE + "***** MENU NHÂN VIÊN *****" + RESET);
+            System.out.println(BLUE + "1. Xem danh sách sản phẩm");
             System.out.println("2. Xem danh sách khách hàng");
             System.out.println("3. Đăng ki lich lam viec");
             System.out.println("4. Xem lịch làm việc");
@@ -279,8 +283,8 @@ public class Main {
     private static void menuKhachHang(Scanner sc, DanhSachKhachHang danhSachKhachHang, DanhSachSanPham danhSachSanPham) {
         int luaChon;
         do {
-            System.out.println(PURPLE+ "***** MENU KHÁCH HÀNG *****" + RESET);
-            System.out.println(YELLOW +"1. Đăng ký tài khoản mới"  );
+            System.out.println(PURPLE + "***** MENU KHÁCH HÀNG *****" + RESET);
+            System.out.println(YELLOW + "1. Đăng ký tài khoản mới");
             System.out.println("2. Đăng nhập");
             System.out.println("3. Xem danh sách sản phẩm");
             System.out.println("4. Thoát" + RESET);
@@ -326,11 +330,15 @@ public class Main {
     private static void menuKhachHangDaDangNhap(Scanner sc, KhachHang khachHang, DanhSachSanPham danhSachSanPham) {
         int luaChon;
         do {
-            System.out.println(PURPLE+ "***** MENU KHÁCH HÀNG ĐÃ ĐĂNG NHẬP *****" + RESET);
-            System.out.println(YELLOW+ "1. Xem thông tin cá nhân" );
+            System.out.println(PURPLE + "***** MENU KHÁCH HÀNG ĐÃ ĐĂNG NHẬP *****" + RESET);
+            System.out.println(YELLOW + "1. Xem thông tin cá nhân");
             System.out.println("2. Xem lịch sử mua hàng");
             System.out.println("3. Mua hàng");
-            System.out.println("4. Đăng xuất" + RESET);
+            System.out.println("4. Đổi mật khẩu");
+            System.out.println("5. Đổi điểm tích lũy");
+            System.out.println("6. Gửi tiền");
+            System.out.println("7. Kiểm tra số dư");
+            System.out.println("0. Đăng xuất" + RESET);
             System.out.print("Chọn chức năng: ");
             try {
                 luaChon = sc.nextInt();
@@ -346,6 +354,18 @@ public class Main {
                         khachHang.muaHang(danhSachSanPham);
                         break;
                     case 4:
+                        khachHang.doiMatKhau();
+                        break;
+                    case 5:
+                        khachHang.quyDoiDiemTichLuy();
+                        break;
+                    case 6:
+                        khachHang.guiTien();
+                        break;
+                    case 7:
+                        khachHang.kiemTraSoDu();
+                        break;
+                    case 0:
                         System.out.println("Đăng xuất thành công.");
                         return;
                     default:
