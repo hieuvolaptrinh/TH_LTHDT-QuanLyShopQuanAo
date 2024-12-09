@@ -26,7 +26,8 @@ public abstract class Nguoi {
         this.email = email;
         this.diaChi = diaChi;
     }
-//Getter and Setter
+
+    //Getter and Setter
 
     public Nguoi() {
     }

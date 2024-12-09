@@ -1,5 +1,6 @@
 package PHUONGTHUCTHANHTOAN;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class ThongTinThanhToan {
@@ -38,6 +39,33 @@ public class ThongTinThanhToan {
 
             if (luaChon == 1) {
                 this.hinhThucThanhToan = "Chuyển khoản";
+                // Tạo mã thanh toán ngẫu nhiên và yêu cầu xác thực
+                Random random = new Random();
+                int maThanhToan = 100000 + random.nextInt(900000);
+                System.out.println("Mã thanh toán (Hệ thống cấp): " + maThanhToan);
+                int dem = 0;
+
+                while (true) {
+                    System.out.print("Nhập mã thanh toán để xác nhận: ");
+                    int nhapMaThanhToan = sc.nextInt();
+                    sc.nextLine(); // Xử lý dòng nhập
+
+                    if (nhapMaThanhToan == maThanhToan) {
+                        this.maThanhToan = String.valueOf(maThanhToan);
+                        System.out.println("Xác nhận mã thanh toán thành công!");
+                        break;
+                    } else {
+                        System.out.println("Mã thanh toán không chính xác. Vui lòng nhập lại!");
+                        dem++;
+                    }
+
+                    if (dem == 3) {
+                        System.out.println("Bạn đã nhập sai mã quá 3 lần. Hệ thống sẽ thoát.");
+                        this.trangThaiThanhToan = "Chưa thanh toán";
+                        return;
+                    }
+                }
+
             } else if (luaChon == 2) {
                 this.hinhThucThanhToan = "Tiền mặt";
             } else {
@@ -45,31 +73,7 @@ public class ThongTinThanhToan {
             }
         } while (luaChon < 1 || luaChon > 2);
 
-        // Tạo mã thanh toán ngẫu nhiên và yêu cầu xác thực
-        int maThanhToan = (int) (Math.random() * 1000);
-        System.out.println("Mã thanh toán (Hệ thống cấp): " + maThanhToan);
-        int dem = 0;
 
-        while (true) {
-            System.out.print("Nhập mã thanh toán để xác nhận: ");
-            int nhapMaThanhToan = sc.nextInt();
-            sc.nextLine(); // Xử lý dòng nhập
-
-            if (nhapMaThanhToan == maThanhToan) {
-                this.maThanhToan = String.valueOf(maThanhToan);
-                System.out.println("Xác nhận mã thanh toán thành công!");
-                break;
-            } else {
-                System.out.println("Mã thanh toán không chính xác. Vui lòng nhập lại!");
-                dem++;
-            }
-
-            if (dem == 3) {
-                System.out.println("Bạn đã nhập sai mã quá 3 lần. Hệ thống sẽ thoát.");
-                this.trangThaiThanhToan = "Chưa thanh toán";
-                return;
-            }
-        }
 
         // Kiểm tra trạng thái thanh toán
         String traLoi;
