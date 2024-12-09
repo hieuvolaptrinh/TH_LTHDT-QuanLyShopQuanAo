@@ -11,7 +11,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class DanhSachSanPham implements File {
+public class DanhSachSanPham{
     Scanner sc = new Scanner(System.in);
     private HashMap<String, SanPham> danhSachSanPham;
 
@@ -67,7 +67,7 @@ public class DanhSachSanPham implements File {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         dateFormat.setLenient(false);
 
-        try (BufferedReader br = new BufferedReader(new FileReader(docSanPham))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/sanpham.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(",");
@@ -204,5 +204,6 @@ public class DanhSachSanPham implements File {
         }
         System.out.println("Tổng tiền nhập sản phẩm mới: " + tongTien);
     }
+
 
 }
