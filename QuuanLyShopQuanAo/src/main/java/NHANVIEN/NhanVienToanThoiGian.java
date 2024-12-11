@@ -108,10 +108,10 @@ public class NhanVienToanThoiGian extends NhanVien {
     @Override
     public void inThongTin() {
         super.inThongTin();
-        System.out.println("Tiền bảo hiểm : " + this.baoHiem);
-        System.out.println("Phụ cấp : " + TinhPhuCap());
-        System.out.println("Tiền tăng ca : " + this.soCaTangCa);
-        System.out.println("Tổng lương : " + TongLuong());
+        System.out.println("Tiền bảo hiểm : " + String.format("%,.0f", this.baoHiem));
+        System.out.println("Phụ cấp : " + String.format("%,.0f", TinhPhuCap()));
+        System.out.println("Tiền tăng ca : " + String.format("%,.0f", this.soCaTangCa));
+        System.out.println("Tổng lương : " + String.format("%,.0f", TongLuong()));
     }
 
     public double TinhPhuCap() {
@@ -130,7 +130,6 @@ public class NhanVienToanThoiGian extends NhanVien {
 
     @Override
     public double TongLuong() {
-
         return this.heSoLuong * luongCoBan + TinhPhuCap() + LuongTangCa() - this.baoHiem - TienPhat();
     }
 

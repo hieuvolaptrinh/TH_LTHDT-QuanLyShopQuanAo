@@ -23,8 +23,9 @@ public class LoginADMIN extends javax.swing.JFrame {
         this.danhSachNhanVien = danhSachNhanVien;
         this.danhSachKhachHang = danhSachKhachHang;
         this.danhSachSanPham = danhSachSanPham;
-         this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);
         initComponents();
+        this.setTitle("Đăng Nhập admin");
     }
 
     @SuppressWarnings("unchecked")

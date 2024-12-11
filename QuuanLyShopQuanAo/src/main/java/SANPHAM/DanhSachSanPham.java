@@ -205,7 +205,15 @@ public class DanhSachSanPham{
         for (SanPham sanPham : danhSachSanPham.values()) {
             tongTien += sanPham.tinhTienNhapSanPham();
         }
-        System.out.println("Tổng tiền nhập sản phẩm mới: " + tongTien);
+        System.out.println("Tổng tiền nhập sản phẩm mới: " + String.format("%.2f", tongTien) );
+    }
+    public double tongTienNhap() {
+        double tongTien = 0;
+        for (SanPham sanPham : danhSachSanPham.values()) {
+            tongTien += sanPham.tinhTienNhapSanPham();
+        }
+        System.out.println("Tổng tiền nhập sản phẩm mới: " + String.format("%.2f", tongTien) );
+        return tongTien;
     }
 
 

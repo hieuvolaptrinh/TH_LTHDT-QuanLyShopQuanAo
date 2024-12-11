@@ -140,7 +140,7 @@ public class DanhSachNhanVien implements File {
                 tongTienTra += nhanVienBanThoigian.TongLuong();
             }
         }
-        System.out.println("Tổng tiền trả cho nhân viên bán thời gian: " + tongTienTra);
+        System.out.println("Tổng tiền trả cho nhân viên bán thời gian: " +String.format("%,.0f", tongTienTra) );
     }
 
     // tổng tiền trả có nhân viên chính thức
@@ -152,7 +152,7 @@ public class DanhSachNhanVien implements File {
                 tongTienTra += nhanVienToanThoiGian.TongLuong();
             }
         }
-        System.out.println("Tổng tiền trả cho nhân viên chính thức: " + tongTienTra);
+        System.out.println("Tổng tiền trả cho nhân viên chính thức: " + String.format("%,.0f", tongTienTra));
     }
     //in lịch làm việc của nhân viên bán thời gian
     public void inLichLamViecNhanVienBanThoiGian() {

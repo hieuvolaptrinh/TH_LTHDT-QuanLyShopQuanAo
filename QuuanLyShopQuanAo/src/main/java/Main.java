@@ -104,10 +104,11 @@ public class Main {
             System.out.println("10. Thống kê số lượng nhân viên trong cửa hàng");
             System.out.println("11. Xem danh sách khách hàng");
             System.out.println("12. Xem sản phẩm trong kho");
-            System.out.println("13. Tuyển thêm nhân viên toàn thời gian từ file");
-            System.out.println("14. Tuyển thêm nhân viên bán thời gian từ file");
-            System.out.println("15. Thêm mặt hàng từ file");
-            System.out.println("16. Đăng xuất" + RESET);
+            System.out.println("13. Thống kê lợi nhuận");
+            System.out.println("14. Tuyển thêm nhân viên toàn thời gian từ file");
+            System.out.println("15. Tuyển thêm nhân viên bán thời gian từ file");
+            System.out.println("16. Thêm mặt hàng từ file");
+            System.out.println("17. Đăng xuất" + RESET);
             System.out.print("Chọn chức năng: ");
             try {
                 luaChon = sc.nextInt();
@@ -149,17 +150,19 @@ public class Main {
                     case 12:
                         quanLy.xuatDanhSachSanPham(danhSachSanPham);
                         break;
-
                     case 13:
-                        quanLy.themNhanVienToanThoiGianFromFile(danhSachNhanVien);
+                        quanLy.thongKeLoiNhuan(danhSachSanPham, danhSachKhachHang);
                         break;
                     case 14:
-                        quanLy.themNhanVienBanThoiGianFromFile(danhSachNhanVien);
+                        quanLy.themNhanVienToanThoiGianFromFile(danhSachNhanVien);
                         break;
                     case 15:
-                        quanLy.themSanPhamFromFile((danhSachSanPham));
+                        quanLy.themNhanVienBanThoiGianFromFile(danhSachNhanVien);
                         break;
                     case 16:
+                        quanLy.themSanPhamFromFile((danhSachSanPham));
+                        break;
+                    case 17:
                         System.out.println("Đăng xuất thành công.");
                         return;
                     default:

@@ -57,6 +57,10 @@ public class DanhSachKhachHang {
     }
 //    lịch sử bản hàng
     public void lichSuMuaHang() {
+        if (danhSachKhachHang.isEmpty()) {
+            System.out.println("Chưa có khách hàng nào");
+            return;
+        }
         for (KhachHang khachHang : danhSachKhachHang.values()) {
             khachHang.hienThiLichSuMuaHang();
         }

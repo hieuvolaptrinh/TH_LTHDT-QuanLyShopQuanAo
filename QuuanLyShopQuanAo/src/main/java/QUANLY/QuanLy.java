@@ -35,7 +35,7 @@ public class QuanLy {
 
     //    xem danh sách nhân viên
     public void xemDanhSachNhanVien(DanhSachNhanVien danhSachNhanVien) {
-        int chon=0;
+        int chon = 0;
         do {
             System.out.println("1. Thống kê  nhân viên bán thời gian");
             System.out.println("2. Thống kê  nhân viên toàn thời gian");
@@ -61,7 +61,7 @@ public class QuanLy {
                     break;
             }
 
-        }while (chon!=4);
+        } while (chon != 4);
     }
 
     //    thống kê số lượng nhân viên trong cửa hàng
@@ -81,22 +81,22 @@ public class QuanLy {
     public void themNhanVien(DanhSachNhanVien danhSachNhanVien) {
         danhSachNhanVien.ThemNhanVien();
     }
+
     public void themNhanVienToanThoiGianFromFile(DanhSachNhanVien danhSachNhanVien) {
         danhSachNhanVien.docFileVaThemNhanVienToanThoiGian();
     }
+
     public void themNhanVienBanThoiGianFromFile(DanhSachNhanVien danhSachNhanVien) {
         danhSachNhanVien.docFileVaThemNhanVienBanThoiGian();
     }
-    public void themSanPhamFromFile(DanhSachSanPham danhSachSanPham)
-    {
+
+    public void themSanPhamFromFile(DanhSachSanPham danhSachSanPham) {
         danhSachSanPham.docFileVaThemSanPham();
     }
 
     //    tiền trả lương cho nhân viên
     public void tienTraLuongNhanVien(DanhSachNhanVien dsNhanVien) {
-        System.out.println("Tổng tiền trả cho nhân viên bán thời gian: ");
         dsNhanVien.tongTienTraNhanVienBanThoiGian();
-        System.out.println("Tổng tiền trả cho nhân viên chính thức: ");
         dsNhanVien.tongTienTraNhanVienChinhThuc();
         dsNhanVien.tongTienTraNhanVien();
 
@@ -110,19 +110,28 @@ public class QuanLy {
     public void thongKeTienNhapHang(DanhSachSanPham dsSanPham) {
         dsSanPham.tongTienNhapSanPham();
     }
+
     //    thống kê doanh thu
     public void thongKeDoanhThu(DanhSachKhachHang danhSachKhachHang) {
-        System.out.println("Tổng doanh thu: " + danhSachKhachHang.tongDoanhThu());
+        System.out.println("Tổng doanh thu: " + String.format("%,.0f", danhSachKhachHang.tongDoanhThu()));
 
     }
+    public void thongKeLoiNhuan(DanhSachSanPham danhSachSanPham, DanhSachKhachHang danhSachKhachHang){
+        System.out.println("Tổng tiền nhập hàng: " + String.format("%,.0f", danhSachSanPham.tongTienNhap()));
+        System.out.println("Tổng doanh thu: " + String.format("%,.0f", danhSachKhachHang.tongDoanhThu()));
+        System.out.println("Tổng lợi nhuận: " + String.format("%,.0f", danhSachKhachHang.tongDoanhThu() - danhSachSanPham.tongTienNhap()));
+    }
+
     //    xem lịch sử mua hàng
     public void xemLichSuMuaHang(DanhSachKhachHang danhSachKhachHang) {
         danhSachKhachHang.lichSuMuaHang();
     }
+
     //    xuất danh sách khách hàng
     public void xuatDanhSachKhachHang(DanhSachKhachHang danhSachKhachHang) {
         danhSachKhachHang.xuatDanhSachKhachHang();
     }
+
     //    xuất danh sách sản phẩm trong kho
     public void xuatDanhSachSanPham(DanhSachSanPham dsSanPham) {
         dsSanPham.xuatDSSanPham();
