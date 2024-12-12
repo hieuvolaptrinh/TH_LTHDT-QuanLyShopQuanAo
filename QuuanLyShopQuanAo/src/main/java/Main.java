@@ -248,6 +248,7 @@ public class Main {
             System.out.println("3. Đăng ki lich lam viec");
             System.out.println("4. Xem lịch làm việc");
             System.out.println("5. Phoo tô lịch làm viêc ( ghi ra file)");
+            System.out.println("6. Đăng kí tăng ca");
             System.out.println("0. Đăng xuất" + RESET);
             System.out.print("Chọn chức năng: ");
             try {
@@ -268,6 +269,10 @@ public class Main {
                         break;
                     case 5:
                         nhanVienBanThoigian.xuatFileLichLamViec();
+                        break;
+                    case 6:
+                        nhanVienBanThoigian.DangKiTangCa();
+                        break;
                     case 0:
                         System.out.println("Đăng xuất thành công.");
                         return;
@@ -381,5 +386,4 @@ public class Main {
             }
         } while (true);
     }
-
 }

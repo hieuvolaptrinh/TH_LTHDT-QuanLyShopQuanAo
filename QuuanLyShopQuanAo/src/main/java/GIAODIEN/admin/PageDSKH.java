@@ -142,15 +142,15 @@ public class PageDSKH extends javax.swing.JPanel {
         if (selectedRow != -1) {
             String cccd = (String) jTable1.getValueAt(selectedRow, 0);
             int confirm = JOptionPane.showConfirmDialog(this,
-                    "Are you sure you want to delete this customer?",
-                    "Confirm Deletion",
+                    "Bạn có muốn xóa tk khách hàng này ko?",
+                    "xóa",
                     JOptionPane.YES_NO_OPTION);
             if (confirm == JOptionPane.YES_OPTION) {
                 dskh.getDanhSachKhachHang().remove(cccd);
                 capNhatDSKH();
             }
         } else {
-            JOptionPane.showMessageDialog(this, "Please select a customer to delete.");
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn khách hàng.");
         }
     }//GEN-LAST:event_jBtnXoaKHActionPerformed
 

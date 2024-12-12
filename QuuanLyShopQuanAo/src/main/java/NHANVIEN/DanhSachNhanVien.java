@@ -186,11 +186,11 @@ public class DanhSachNhanVien implements File {
         }
         return null;
     }
-    public void docFileVaThemNhanVienToanThoiGian() {
+    public void docFileNhanVienToanThoiGian() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         dateFormat.setLenient(false);
 
-        try (BufferedReader br = new BufferedReader(new FileReader(docNhanVienToanThoiGian))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(readPath +"nhanvientoanthoigian.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(",");
@@ -241,7 +241,7 @@ public class DanhSachNhanVien implements File {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         dateFormat.setLenient(false);
 
-        try (BufferedReader br = new BufferedReader(new FileReader(docNhanVienBanThoiGian))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(readPath +"nhanvienbanthoigian.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(",");

@@ -85,7 +85,7 @@ public class KhachHang extends Nguoi {
         super.inThongTin();
         System.out.println("Điểm tích lũy: " + diemTichLuy);
         for (DonHang donHang : lichSuMuaHang) {
-            System.out.println("- " + donHang.toString());
+             donHang.inDonHang();
         }
     }
 
@@ -103,6 +103,7 @@ public class KhachHang extends Nguoi {
         double tongTienThanhToan = 0;
         double tongTienThanhToanQuaTaiKhoan = 0;
         dsSanPham.xuatDSSanPham();
+        System.out.println("--------------------------------");
         if (dsSanPham.getDanhSachSanPham().isEmpty()) {
             System.out.println("Hiện tại không có sản phẩm nào để mua.");
             return;
@@ -188,7 +189,7 @@ public class KhachHang extends Nguoi {
     }
 
     public void tinhDiemTichLuy(double soTienMuaHang) {
-        this.diemTichLuy = this.diemTichLuy + soTienMuaHang / 1000;
+        this.diemTichLuy = this.diemTichLuy + soTienMuaHang / 10;
     }
 
     public int randomOTP() {
@@ -210,12 +211,12 @@ public class KhachHang extends Nguoi {
             if (mk.equals(getMatKhau())) {
 
                 if (this.diemTichLuy < 1000) {
-                    System.out.println("Số dư không đủ để mua card điện thoại");
+                    System.out.println("Điểm tích lũy phải trên 1000 mới mở khóa chức năng quy đổi điểm.");
                     break;
                 }
 
                 do {
-                    System.out.print("Chọn một trong những loại mệnh giá sau với 1000 điểm tích lũy quy đổi được thẻ với mệnh giá 10,000 VND :");
+                    System.out.println("Chọn một trong những loại mệnh giá sau với 1000 điểm tích lũy quy đổi được thẻ với mệnh giá 10,000 VND :");
                     System.out.println("10,000 VND   20,000 VND  50,000 VND  100,000 VND  200,000 VND  500,000 VND");
                     double menhGia = sc.nextDouble();
                     sc.nextLine();

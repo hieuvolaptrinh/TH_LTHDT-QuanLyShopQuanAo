@@ -166,7 +166,6 @@ public class SanPham {
         String tenCongTy = sc.nextLine();
         System.out.print("Địa chỉ: ");
         String diaChi = sc.nextLine();
-
         this.nhaCungCap = new NhaCungCap(quocGia, tenCongTy, diaChi);
 
     }

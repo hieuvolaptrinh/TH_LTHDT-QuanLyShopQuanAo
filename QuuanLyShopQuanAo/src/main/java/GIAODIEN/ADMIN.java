@@ -32,10 +32,10 @@ public class ADMIN extends javax.swing.JFrame {
         pageDSKH1 = new GIAODIEN.admin.PageDSKH(danhSachNhanVien, danhSachKhachHang, danhSachSanPham);
         pageDSSP1 = new GIAODIEN.admin.PageDSSP(danhSachSanPham, danhSachNhanVien, danhSachKhachHang);
 
-        jTabbedPane1.setComponentAt(1, pageDSKH1);
+        jTabbedPane1.setComponentAt(0, pageDSKH1);
 
-        jTabbedPane1.setComponentAt(0, pageDSNV1);
-        jTabbedPane1.setComponentAt(2, pageDSSP1);
+        jTabbedPane1.setComponentAt(2, pageDSNV1);
+        jTabbedPane1.setComponentAt(1, pageDSSP1);
     }
 
     @SuppressWarnings("unchecked")
@@ -128,21 +128,17 @@ public class ADMIN extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addGap(33, 33, 33)
-                    .addComponent(jLabel1)
-                    .addContainerGap(63, Short.MAX_VALUE)))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addGap(10, 10, 10)
-                    .addComponent(jLabel1)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addContainerGap())
         );
 
         jButton1.setBackground(new java.awt.Color(255, 255, 153));

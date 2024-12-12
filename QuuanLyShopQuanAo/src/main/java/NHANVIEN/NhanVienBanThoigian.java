@@ -16,17 +16,16 @@ public class NhanVienBanThoigian extends NhanVien {
     // Constructor
 
     public NhanVienBanThoigian(String CCCD, String hoTen, String soDienThoai, String gioiTinh, Date ngaySinh,
-            String email, String diaChi, String maNhanVien, double soGioLam, double soGioLamTangCa, double soGioNghi,
-            ArrayList<LichLamViec> lichLamViecs) {
+                               String email, String diaChi, String maNhanVien, double soGioLam, double soGioLamTangCa, double soGioNghi) {
         super(CCCD, hoTen, soDienThoai, gioiTinh, ngaySinh, email, diaChi, maNhanVien);
         this.soGioLam = soGioLam;
         this.soGioLamTangCa = soGioLamTangCa;
         this.soGioNghi = soGioNghi;
-        this.lichLamViecs = new ArrayList<>();
+        this.lichLamViecs = lichLamViecs != null ? lichLamViecs : new ArrayList<>();
     }
 
     public NhanVienBanThoigian(String CCCD, String hoTen, String soDienThoai, String gioiTinh, Date ngaySinh,
-            String email, String diaChi, String maNhanVien) {
+                               String email, String diaChi, String maNhanVien) {
         super(CCCD, hoTen, soDienThoai, gioiTinh, ngaySinh, email, diaChi, maNhanVien);
     }
 
@@ -122,9 +121,7 @@ public class NhanVienBanThoigian extends NhanVien {
             try {
                 lichLamViec.InThongTin();
             } catch (Exception e) {
-                // Xử lý hoặc bỏ qua ngoại lệ nếu có lỗi xảy ra
                 System.out.println("Có lỗi xảy ra khi in thông tin lịch làm việc: " + e.getMessage());
-                // Bạn có thể bỏ qua hoặc xử lý khác tùy theo yêu cầu
             }
         }
     }
@@ -134,59 +131,56 @@ public class NhanVienBanThoigian extends NhanVien {
         do {
             System.out.println("1. Sáng (7h-11h)");
             System.out.println("2. Chiều (13h-17h)");
-            System.out.println("3. Tăng ca Tối  (19h-23h)");
+            System.out.println("3. Tăng ca Tối (19h-23h)");
             System.out.print("Chọn ca làm việc: ");
             luaChon = sc.nextInt();
             sc.nextLine();
+            if (lichLamViecs == null) {
+                lichLamViecs = new ArrayList<>();
+            }
+
+            Date currentDate = new Date();
+
             switch (luaChon) {
                 case 1:
-                    System.out.println("Nhập ngày làm việc dd/MM/yyyy : ");
-                    String ngay = sc.nextLine();
-                    LichLamViec lichLamViec = new LichLamViec();
-                    try {
-                        lichLamViec.setNgayLamViec(new SimpleDateFormat("dd/MM/yyyy").parse(ngay));
-                    } catch (ParseException e) {
-                        System.out.println("Ngày làm việc không hợp lệ.");
-                        e.printStackTrace();
-                    }
-                    lichLamViec.setCaLamViec("Sáng");
-                    lichLamViecs.add(lichLamViec);
-                    this.soGioLam += 4;
                 case 2:
-                    System.out.println("Nhập ngày làm việc dd/MM/yyyy : ");
-                    String ngay1 = sc.nextLine();
-                    LichLamViec lichLamViec1 = new LichLamViec();
-                    try {
-                        lichLamViec1.setNgayLamViec(new SimpleDateFormat("dd/MM/yyyy").parse(ngay1));
-                    } catch (ParseException e) {
-                        System.out.println("Ngày làm việc không hợp lệ.");
-                        e.printStackTrace();
-                    }
-                    lichLamViec1.setCaLamViec("Chiều");
-                    lichLamViecs.add(lichLamViec1);
-                    this.soGioLam += 4;
-                    break;
                 case 3:
-                    System.out.println("Nhập ngày làm việc dd/MM/yyyy : ");
-                    String ngay2 = sc.nextLine();
-                    LichLamViec lichLamViec2 = new LichLamViec();
-                    try {
-                        lichLamViec2.setNgayLamViec(new SimpleDateFormat("dd/MM/yyyy").parse(ngay2));
-                    } catch (ParseException e) {
-                        System.out.println("Ngày làm việc không hợp lệ.");
-                        e.printStackTrace();
+                    boolean validDate = false;
+                    while (!validDate) {
+                        System.out.println("Nhập ngày làm việc dd/MM/yyyy : ");
+                        String ngay = sc.nextLine();
+                        LichLamViec lichLamViec = new LichLamViec();
+                        try {
+                            Date ngayLamViec = new SimpleDateFormat("dd/MM/yyyy").parse(ngay);
+
+                            if (ngayLamViec.before(currentDate)) {
+                                System.out.println("Ngày làm việc phải lớn hơn ngày hiện tại. Vui lòng nhập lại.");
+                            } else {
+                                lichLamViec.setNgayLamViec(ngayLamViec);
+                                validDate = true;
+                                if (luaChon == 1) {
+                                    lichLamViec.setCaLamViec("Sáng");
+                                } else if (luaChon == 2) {
+                                    lichLamViec.setCaLamViec("Chiều");
+                                } else if (luaChon == 3) {
+                                    lichLamViec.setCaLamViec("Tối");
+                                }
+                                lichLamViecs.add(lichLamViec);
+                                this.soGioLam += 4;
+                            }
+                        } catch (ParseException e) {
+                            System.out.println("Ngày làm việc không hợp lệ.");
+                            e.printStackTrace();
+                        }
                     }
-                    lichLamViec2.setCaLamViec("Tối");
-                    lichLamViecs.add(lichLamViec2);
-                    this.soGioLam += 4;
                     break;
                 default:
                     System.out.println("Lựa chọn không hợp lệ. Vui lòng chọn lại.");
                     break;
             }
         } while (luaChon < 1 || luaChon > 3);
-
     }
+
 
     @Override
     public double TienPhat() {
@@ -242,5 +236,77 @@ public class NhanVienBanThoigian extends NhanVien {
         System.out.println("Tổng số giờ làm tăng ca: " + soGioLamTangCa);
         System.out.println("Tổng số giờ nghỉ: " + soGioNghi);
     }
+
+    public void DangKiTangCa() {
+        if (this.soGioLam < 5) {
+            System.out.println("Nhân viên cần làm đủ 10 giờ trước khi đăng ký tăng ca.");
+            return;
+        }
+
+        int luaChon;
+        do {
+            System.out.println("Chọn thời gian tăng ca:");
+            System.out.println("1. Tăng ca Tối (19h - 23h)");
+            System.out.println("2. Tăng ca Khuya (23h - 03h)");
+            System.out.println("3. Kết thúc đăng ký tăng ca");
+            System.out.print("Lựa chọn: ");
+            luaChon = sc.nextInt();
+            sc.nextLine();
+
+            if (luaChon == 3) {
+                System.out.println("Kết thúc đăng ký tăng ca.");
+                break;
+            }
+
+            if (luaChon != 1 && luaChon != 2) {
+                System.out.println("Lựa chọn không hợp lệ. Vui lòng chọn lại.");
+                continue;
+            }
+
+            boolean validDate = false;
+            Date currentDate = new Date(); // Lấy ngày hiện tại
+
+            while (!validDate) {
+                System.out.println("Nhập ngày làm việc tăng ca dd/MM/yyyy: ");
+                String ngayTangCa = sc.nextLine();
+                LichLamViec lichLamViecTangCa = new LichLamViec();
+                try {
+                    Date ngayLamViec = new SimpleDateFormat("dd/MM/yyyy").parse(ngayTangCa);
+
+                    // Kiểm tra ngày nhập vào có lớn hơn ngày hiện tại không
+                    if (ngayLamViec.before(currentDate)) {
+                        System.out.println("Ngày làm việc phải lớn hơn ngày hiện tại. Vui lòng nhập lại.");
+                    } else {
+                        lichLamViecTangCa.setNgayLamViec(ngayLamViec);
+                        validDate = true;  // Nếu ngày hợp lệ, thoát khỏi vòng lặp nhập ngày
+                    }
+                } catch (ParseException e) {
+                    System.out.println("Ngày làm việc không hợp lệ.");
+                    e.printStackTrace();
+                }
+            }
+
+            String caLamViec = "";
+            int soGioTangCa = 0;
+            switch (luaChon) {
+                case 1:
+                    caLamViec = "Tăng ca Tối";
+                    soGioTangCa = 4;
+                    break;
+                case 2:
+                    caLamViec = "Tăng ca Khuya";
+                    soGioTangCa = 4;
+                    break;
+            }
+            this.soGioLamTangCa += soGioTangCa;
+
+            System.out.println("Đăng ký tăng ca thành công!");
+//            System.out.println("Ngày tăng ca: " + ngayTangCa);
+//            System.out.println("Ca làm việc: " + caLamViec);
+            System.out.println("Số giờ tăng ca hiện tại: " + this.soGioLamTangCa);
+
+        } while (luaChon != 3);
+    }
+
 
 }

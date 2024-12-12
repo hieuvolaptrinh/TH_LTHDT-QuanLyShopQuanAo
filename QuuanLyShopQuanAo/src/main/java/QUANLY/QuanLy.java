@@ -83,7 +83,7 @@ public class QuanLy {
     }
 
     public void themNhanVienToanThoiGianFromFile(DanhSachNhanVien danhSachNhanVien) {
-        danhSachNhanVien.docFileVaThemNhanVienToanThoiGian();
+        danhSachNhanVien.docFileNhanVienToanThoiGian();
     }
 
     public void themNhanVienBanThoiGianFromFile(DanhSachNhanVien danhSachNhanVien) {

@@ -80,9 +80,9 @@ public class DonHang {
     public void inDonHang() {
         System.out.println("--------------------------------------------------");
         System.out.println("Thông tin đơn hàng: ");
-        // System.out.println("Mã đơn hàng: " + maDonHang);
 
-        // Định dạng ngày giờ
+
+
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String ngayMuaFormatted = formatter.format(ngayMua);
         System.out.println("Ngày mua: " + ngayMuaFormatted);
@@ -96,7 +96,7 @@ public class DonHang {
             chiTiet.inChiTietDonHang();
         }
 
-        System.out.println("Tổng tiền: " + String.format("%.2f", thanhTien) + " VND");
+//        System.out.println("Tổng tiền: " + String.format("%.2f", thanhTien) + " VND");
     }
 
     public void inDonHangToFile(BufferedWriter writer) throws IOException {
