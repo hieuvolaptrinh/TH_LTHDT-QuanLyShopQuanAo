@@ -81,8 +81,6 @@ public class DonHang {
         System.out.println("--------------------------------------------------");
         System.out.println("Thông tin đơn hàng: ");
 
-
-
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String ngayMuaFormatted = formatter.format(ngayMua);
         System.out.println("Ngày mua: " + ngayMuaFormatted);
@@ -96,7 +94,8 @@ public class DonHang {
             chiTiet.inChiTietDonHang();
         }
 
-//        System.out.println("Tổng tiền: " + String.format("%.2f", thanhTien) + " VND");
+        // System.out.println("Tổng tiền: " + String.format("%.2f", thanhTien) + "
+        // VND");
     }
 
     public void inDonHangToFile(BufferedWriter writer) throws IOException {
@@ -132,22 +131,28 @@ public class DonHang {
         }
     }
 
-    // thành tiền
     public double thanhTien() {
         double tongTien = 0;
         for (String key : dsChiTietDonHang.keySet()) {
-            tongTien += dsChiTietDonHang.get(key).getSanPham().getGiaBan()
-                    * dsChiTietDonHang.get(key).getSanPham().getSoLuong();
+            ChiTietDonHang chiTiet = dsChiTietDonHang.get(key);
+            double giaBan = chiTiet.getSanPham().getGiaBan();
+            int soLuong = chiTiet.getSanPham().getSoLuong();
+            // System.out.println("Giá bán: " + giaBan + ", Số lượng: " + soLuong); // Debug
+            // line
+            tongTien += giaBan * soLuong;
         }
         return tongTien;
     }
 
-    // tiền lời từ mỗi đơn hàng
     public double tienLoi() {
         double tongTien = 0;
         for (String key : dsChiTietDonHang.keySet()) {
-            tongTien += dsChiTietDonHang.get(key).getSanPham().getGiaBan()
-                    - dsChiTietDonHang.get(key).getSanPham().getGiaNhap();
+            ChiTietDonHang chiTiet = dsChiTietDonHang.get(key);
+            double giaBan = chiTiet.getSanPham().getGiaBan();
+            double giaNhap = chiTiet.getSanPham().getGiaNhap();
+            // System.out.println("Giá bán: " + giaBan + ", Giá nhập: " + giaNhap); // Debug
+            // line
+            tongTien += (giaBan - giaNhap);
         }
         return tongTien;
     }

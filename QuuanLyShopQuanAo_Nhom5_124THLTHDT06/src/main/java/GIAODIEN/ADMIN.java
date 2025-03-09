@@ -18,6 +18,7 @@ public class ADMIN extends javax.swing.JFrame {
     private DanhSachKhachHang danhSachKhachHang;
     private DanhSachSanPham danhSachSanPham;
 
+
     public ADMIN(DanhSachNhanVien danhSachNhanVien, DanhSachKhachHang danhSachKhachHang, DanhSachSanPham danhSachSanPham) {
         this.danhSachNhanVien = danhSachNhanVien;
         this.danhSachKhachHang = danhSachKhachHang;
@@ -31,18 +32,21 @@ public class ADMIN extends javax.swing.JFrame {
 
         pageDSKH1 = new GIAODIEN.admin.PageDSKH(danhSachNhanVien, danhSachKhachHang, danhSachSanPham);
         pageDSSP1 = new GIAODIEN.admin.PageDSSP(danhSachSanPham, danhSachNhanVien, danhSachKhachHang);
+        ggt= new GIAODIEN.admin.PageDSSP(danhSachSanPham, danhSachNhanVien, danhSachKhachHang);
+        
+        giaoDienTest.setComponentAt(0, pageDSKH1);
 
-        jTabbedPane1.setComponentAt(0, pageDSKH1);
-
-        jTabbedPane1.setComponentAt(2, pageDSNV1);
-        jTabbedPane1.setComponentAt(1, pageDSSP1);
+        giaoDienTest.setComponentAt(2, pageDSNV1);
+        giaoDienTest.setComponentAt(1, pageDSSP1);
+        giaoDienTest.setComponentAt(3, ggt);
+        
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        giaoDienTest = new javax.swing.JTabbedPane();
         jScrollPane2 = new javax.swing.JScrollPane();
         jScrollPane5 = new javax.swing.JScrollPane();
         pageDSKH1 = new GIAODIEN.admin.PageDSKH();
@@ -54,6 +58,8 @@ public class ADMIN extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         pageDSNV1 = new GIAODIEN.admin.PageDSNV();
+        ggt = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -66,7 +72,7 @@ public class ADMIN extends javax.swing.JFrame {
 
         jScrollPane2.setViewportView(jScrollPane5);
 
-        jTabbedPane1.addTab("Danh Sách Khach Hàng", jScrollPane2);
+        giaoDienTest.addTab("Danh Sách Khach Hàng", jScrollPane2);
 
         jScrollPane1.setViewportView(pageDSSP1);
 
@@ -84,7 +90,7 @@ public class ADMIN extends javax.swing.JFrame {
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 581, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Danh Sách Sản Phẩm", jPanel1);
+        giaoDienTest.addTab("Danh Sách Sản Phẩm", jPanel1);
 
         pageDSNV1.setBackground(new java.awt.Color(204, 204, 255));
         jScrollPane3.setViewportView(pageDSNV1);
@@ -116,7 +122,33 @@ public class ADMIN extends javax.swing.JFrame {
 
         jScrollPane4.setViewportView(jPanel2);
 
-        jTabbedPane1.addTab("Danh Sách Nhân Viên", jScrollPane4);
+        giaoDienTest.addTab("Danh Sách Nhân Viên", jScrollPane4);
+
+        javax.swing.GroupLayout ggtLayout = new javax.swing.GroupLayout(ggt);
+        ggt.setLayout(ggtLayout);
+        ggtLayout.setHorizontalGroup(
+            ggtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1257, Short.MAX_VALUE)
+        );
+        ggtLayout.setVerticalGroup(
+            ggtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 581, Short.MAX_VALUE)
+        );
+
+        giaoDienTest.addTab("Giao diện test", ggt);
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1257, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 581, Short.MAX_VALUE)
+        );
+
+        giaoDienTest.addTab("tab5", jPanel5);
 
         jPanel3.setBackground(new java.awt.Color(255, 204, 255));
 
@@ -131,7 +163,7 @@ public class ADMIN extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(108, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,21 +188,22 @@ public class ADMIN extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTabbedPane1)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(giaoDienTest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 608, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(giaoDienTest, javax.swing.GroupLayout.PREFERRED_SIZE, 608, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(6, 6, 6))
@@ -222,18 +255,20 @@ public class ADMIN extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel ggt;
+    private javax.swing.JTabbedPane giaoDienTest;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private GIAODIEN.admin.PageDSKH pageDSKH1;
     private GIAODIEN.admin.PageDSNV pageDSNV1;
     private GIAODIEN.admin.PageDSSP pageDSSP1;

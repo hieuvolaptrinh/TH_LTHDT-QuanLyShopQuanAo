@@ -1,5 +1,6 @@
 package KHACHHANG;
 
+import DONHANG.ChiTietDonHang;
 import DONHANG.DonHang;
 
 import java.util.HashMap;
@@ -46,15 +47,19 @@ public class DanhSachKhachHang {
         }
     }
 //    tính doanh thu
-    public double tongDoanhThu() {
-        double doanhThu = 0;
-        for (KhachHang khachHang : danhSachKhachHang.values()) {
-            for (DonHang donHang: khachHang.getLichSuMuaHang()) {
-                doanhThu += donHang.thanhTien();
+public double tongDoanhThu() {
+    double doanhThu = 0;
+    for (KhachHang khachHang : danhSachKhachHang.values()) {
+        for (DonHang donHang : khachHang.getLichSuMuaHang()) {
+
+            for (ChiTietDonHang chiTiet : donHang.getDsChiTietDonHang().values()) {
+                // Doanh thu = số lượng sản phẩm * giá bán
+                doanhThu += chiTiet.getSanPham().getGiaBan() * chiTiet.getSoLuong();
             }
         }
-        return doanhThu;
     }
+    return doanhThu;
+}
 //    lịch sử bản hàng
     public void lichSuMuaHang() {
         if (danhSachKhachHang.isEmpty()) {

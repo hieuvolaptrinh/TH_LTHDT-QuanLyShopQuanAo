@@ -176,7 +176,7 @@ public class DanhSachNhanVien implements File {
                 tongTienTra += nhanVienToanThoiGian.TongLuong();
             }
         }
-        System.out.println("Tổng tiền trả cho tất cả nhân viên: " + tongTienTra);
+        System.out.println("Tổng tiền trả cho tất cả nhân viên: " + String.format("%,.0f", tongTienTra));
     }
     //    đăng nhập nhân viên
     public NhanVien dangNhapNhanVien(String maNV) {

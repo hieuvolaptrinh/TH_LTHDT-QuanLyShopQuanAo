@@ -1,6 +1,0 @@
-Lịch làm việc của nhân viên: 
-Ngày: 15/12/2024, Ca: Sáng
-Ngày: 15/12/2024, Ca: Chiều
-Tổng số giờ làm: 8.0
-Tổng số giờ làm tăng ca: 0.0
-Tổng số giờ nghỉ: 0.0
